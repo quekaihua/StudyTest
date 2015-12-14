@@ -30,4 +30,16 @@ class lib{
             $_SESSION[$name] = $value;
         }
     }
+
+    public static function sendto($url=''){
+        if(empty($url)){
+            $url = '/';
+        }
+
+        die(header('Location: '.$url));
+    }
+
+    public static function seterror($error){
+        self::setitem('error',$error,self::SETTING_AN_ARRAY);
+    }
 }

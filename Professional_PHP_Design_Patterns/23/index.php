@@ -11,5 +11,7 @@ require 'includes/exceptions.php';
 session_start();
 
 $view = new view();
+lib::setitem('controller',new controller($_GET['u']));
 lib::getitem('controller')->render();
 $content = $view->finish();
+echo view::show('shell',array('body'=>$content));
