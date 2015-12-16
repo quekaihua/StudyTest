@@ -42,4 +42,8 @@ class lib{
     public static function seterror($error){
         self::setitem('error',$error,self::SETTING_AN_ARRAY);
     }
+
+    public static function makehashedpassword(user $user,$password){
+        return sha1($user->username.$password);
+    }
 }
