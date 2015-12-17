@@ -33,8 +33,3 @@ class UserStore{
         return ($this->users[$mail]);
     }
 }
-
-$store = new UserStore();
-$store->addUser("bob williams","bob@example.com","12345");
-$user = $store->getUser("bob@example.com");
-print_r($user);
