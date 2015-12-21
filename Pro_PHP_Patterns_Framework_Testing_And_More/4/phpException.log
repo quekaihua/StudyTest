@@ -1,0 +1,5 @@
+exception 'LoggedException' in D:\WWW\StudyTest\Pro_PHP_Patterns_Framework_Testing_And_More\4\4-3.php:9
+Stack trace:
+#0 D:\WWW\StudyTest\Pro_PHP_Patterns_Framework_Testing_And_More\4\4-3.php(14): connectToDatabase()
+#1 D:\WWW\StudyTest\Pro_PHP_Patterns_Framework_Testing_And_More\4\4-4.php(23): include('D:\\WWW\\StudyTes...')
+#2 {main}

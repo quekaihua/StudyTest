@@ -1,0 +1,3 @@
+exception 'Exception' with message '除数不能为0' in D:\WWW\StudyTest\Pro_PHP_Patterns_Framework_Testing_And_More\4\4-5.php:17
+Stack trace:
+#0 {main}
