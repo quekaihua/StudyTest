@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <script src="json.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            function getXHR(){
+                var req;
+                if(window.XMLHttpRequest){
+                    req = new XMLHttpRequest();
+                }else if(window.ActiveXObject){
+                    req = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                return req;
+            }
+
+            function getServerTime(){
+                xhr = getXHR();
+                rand = Math.random(1);
+                url = "http://web.wsmapp.com/StudyTest/Pro_PHP_Patterns_Framework_Testing_And_More/18/time.php?id="+rand;
+                xhr.open("GET",url,false);
+                xhr.send();
+                json = xhr.responseText;
+                time = JSON.parse(json);
+                div = document.getElementById('jsonData');
+                div.innerHTML = time['time'];
+            }
+        </script>
+    </head>
+    <body>
+    <a href="#" onclick="getServerTime()">Get Server Time</a>
+    <div id="jsonData"></div>
+    </body>
+</html>

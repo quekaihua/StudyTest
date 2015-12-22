@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <script src="json.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            var xhr;
+
+            function getXHR(){
+                var req;
+                if(window.XMLHttpRequest){
+                    req = new XMLHttpRequest();
+                }else if(window.ActiveXObject){
+                    req = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                return req;
+            }
+
+            function suggest(){
+                if(xhr && xhr.readyState !=0){
+                    xhr.abort();
+                }
+
+                xhr = getXHR();
+
+                xhr.open("POST","http://web.wsmapp.com/StudyTest/Pro_PHP_Patterns_Framework_Testing_And_More/18/suggest.php",true);
+                searchValue = document.getElementById("search").value;
+
+                data = "search="+encodeURIComponent(searchValue);
+
+                xhr.onreadystatechange = readyStateChange;
+
+                xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+
+                xhr.send(data);
+            }
+
+            function readyStateChange(){
+//                if(xhr.readySate == 4){
+//                alert(xhr.readyState);
+                    if(xhr.responseText && xhr.status == 200){
+                        json = xhr.responseText;
+//                        alert(json);
+                        try{
+                            suggestionArr = JSON.parse(json);
+                        }catch(e){
+                            alert("error message");
+                        }
+//                        alert(suggestionArr);
+//                        alert(suggestionArr.length)
+                        tmpHtml = "";
+                        for(i=0,len=suggestionArr.length;i<len;i++){
+                            tmpHtml += suggestionArr[i]+"<br/>";
+                        }
+//                        alert(tmpHtml);
+                        div = document.getElementById('suggestions');
+                        div.innerHTML = tmpHtml;
+                    }
+
+//                }
+            }
+        </script>
+    </head>
+    <input id="search" type="text" onkeyup="suggest()"/>
+    <div id="suggestions"></div>
+</html>
