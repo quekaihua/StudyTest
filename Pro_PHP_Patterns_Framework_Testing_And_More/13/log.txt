@@ -1,0 +1,6 @@
+exception 'LogicException' with message 'Demo' in D:\WWW\StudyTest\Pro_PHP_Patterns_Framework_Testing_And_More\13\13-2.php:11
+Stack trace:
+#0 {main}
+exception 'LogicException' with message 'Demo' in D:\WWW\StudyTest\Pro_PHP_Patterns_Framework_Testing_And_More\13\13-2.php:11
+Stack trace:
+#0 {main}
