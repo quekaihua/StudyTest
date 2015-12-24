@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: Administrator
- * Date: 2015/12/22
- * Time: 16:46
+ * Date: 2015/12/1
+ * Time: 10:54
  */
 class MyIterableClass implements IteratorAggregate{
     protected $arr;
