@@ -1,0 +1,37 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Administrator
+ * Date: 2015/12/30
+ * Time: 17:53
+ */
+//抽象工厂
+abstract class CommsManager{
+    const APPT = 1;
+    const TTD = 2;
+    const CONTACT = 3;
+    abstract function getHeaderText();
+    abstract function make($flag_int);
+    abstract function getFooterText();
+}
+
+class BloggsCommsManager extends CommsManager{
+    function getHeaderText(){
+        return "BloggsCal header\n";
+    }
+
+    function make($flag_int){
+        switch($flag_int){
+            case self::APPT:
+                return new BloggsApptEncoder();
+            case self::CONTACT:
+                return new BloggsContactEncoder();
+            case self::TTD:
+                return new BloggsTtdEncoder();
+        }
+    }
+
+    function getFooterText(){
+        return "BloggsCal footer\n";
+    }
+}
