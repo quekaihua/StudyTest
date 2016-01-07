@@ -10,10 +10,9 @@ struct ListNode {
 class Solution {
 public:
     ListNode* reverseList(ListNode* head) {
-        ListNode* prev;
-        ListNode* curr;
-        prev = NULL;
-        curr = head;
+        ListNode* prev = NULL;
+        ListNode* curr = head;
+        
         while(curr != NULL){
         	ListNode* tempNode;
         	tempNode = curr->next;
@@ -25,6 +24,73 @@ public:
 		
 		return prev;
     }
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+    	ListNode* prev = NULL;
+		ListNode* curr = head;
+    	int count = 0;
+    	
+    	//找出正序第几 
+    	while(curr != NULL){
+    		curr = curr->next;
+    		count++;
+		}
+		
+		int nth = count - n;
+		//找到正序的指针 
+		count = 0;
+		curr = head;
+		while(curr != NULL && count < nth){
+			prev = curr;
+			curr = curr->next;
+			count++;
+		}
+		if(prev == NULL){
+			head = curr->next;
+		}else{
+		//改变指针并删除节点
+		prev->next = curr->next;	
+		delete curr;
+		}
+		return head;
+    }
+    ListNode* removeElements(ListNode* head, int val) {
+    	while(head->next != NULL && head->val == val){
+    		head = head->next;
+		}
+        ListNode* prev = NULL;
+        ListNode* curr = head;
+		while(curr != NULL){
+			cout << "curr: " << curr->val << endl;
+        	if(curr->val == val){
+				prev->next = curr->next;	
+			}
+			prev = curr;
+			curr = curr->next;
+		}
+		
+		return head;
+    }
+    
+    ListNode* deleteDuplicates(ListNode* head) {
+        ListNode* curr = head;
+        ListNode* prev = curr;
+		while(curr != NULL){
+       		bool flag = true;
+       	
+			if(prev && curr){
+				if(curr->val == prev->val)
+	        		prev->next = curr->next;
+				else
+					flag = false;
+				
+			}
+			if(!flag)prev = curr;
+			curr = curr->next;
+		}
+		
+		return head;
+    }
+    
     void printList(ListNode* head){
     	ListNode* curr = head;
 		while(curr != NULL){
@@ -36,16 +102,21 @@ public:
 };
 
 int main(){
-	ListNode* head = NULL;
-	ListNode* first;ListNode* second;ListNode* third;
-	first->val = 1;
-	second->val = 2;
-	third->val = 3;
-	head = first;
-	head->next = second;
-	second->next = third; 
-	third->next = NULL;
+	ListNode first = ListNode(1);
+	ListNode second = ListNode(2);
+	ListNode second2 = ListNode(1);
+	ListNode third = ListNode(2);
+	ListNode forth = ListNode(3);
+	ListNode fifth = ListNode(3);
+	first.next = &second; 
+	second2.next = &third; second.next = &second2;
+	third.next=&forth; forth.next = &fifth;second.next = &second2;
 	Solution a;
-	a.printList(head);
-	
+	a.printList(&first);
+//	a.reverseList(&first);
+//	a.printList(&third);	
+//	a.removeNthFromEnd(&first,2);
+//	a.printList(a.removeNthFromEnd(&first,2));
+	a.printList(a.removeElements(&first,3));
+//	a.printList(a.deleteDuplicates(&first));
 }
