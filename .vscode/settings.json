@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "ios": "c",
+        "__tuple": "c",
+        "tuple": "c",
+        "utility": "c"
+    }
+}
