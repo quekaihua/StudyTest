@@ -25,7 +25,12 @@ class VersionController extends Controller {
     }
 
     public function show_pro(){
-        $list = $this->model->select();
+        $pid = I('get.pid');
+        if(!$pid){
+            $this->error('参数错误');
+        }
+        $where['pid'] = $pid;
+        $list = $this->model->where($where)->select();
         $this->assign(array(
             "pid" => I("get.pid"),
             "list" => $list
@@ -34,6 +39,7 @@ class VersionController extends Controller {
     }
 
     public function add(){
+        //todo
         $pid = I('post.pid');
         $data['pid'] = $pid;
         $data['create_time'] = date("Y-m-d H:i:s");
@@ -42,6 +48,26 @@ class VersionController extends Controller {
             $this->ajaxReturn(apiSuccess('操作成功'));
         }else{
             $this->ajaxReturn(apiFail('操作失败'));
+        }
+
+        $version = I('post.version');
+        $desc = I('post.desc');
+
+        $has_version = $this->model->where(array('version'=>$version))->find();
+        if($has_version){
+            $this->error('已经存在此版本');
+//            $this->ajaxReturn(apiFail('已经存在此项目'));
+        }
+        $data['project_name'] = $pname;
+        $data['desc'] = $desc;
+        $data['create_time'] = date("Y-m-d H:i:s");
+        $res = $this->model->add($data);
+        if($res){
+            $this->success('操作成功');
+//            $this->ajaxReturn(apiSuccess('操作成功'));
+        }else{
+            $this->error('操作失败');
+//            $this->ajaxReturn(apiFail('操作失败'));
         }
     }
 

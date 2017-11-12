@@ -1,46 +1,25 @@
-<include file="Public/header"/>
-<include file="Public/top" />
-<include file="Public/left" />
-    <div class="content clearfix">
-        <div class="main">
-            <!--右侧内容-->
-            <div class="cont">
-                <div class="title">项目添加</div>
-                <div class="details">
-                    <div class="details_operation clearfix">
-                    </div>
-                    <!--表格-->
-                    <table class="table" cellspacing="0" cellpadding="0">
-                        <thead>
-                            <tr>
-                            </tr>
-                        </thead>
-                        <tbody>
-                                <tr>
-                                    <td>项目名</td>
-                                    <td><input type="text" name="pname" id="pname"/></td>
-                                    <td><input type="button" value="提交" class="add"/></td>
-                                </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <include file="Public/left" />
-    </div>
-    <script>
-        $(document).ready(function(){
-            $(".add").click(function(){
-                // $(this).hide();
-                $.post("{:U('Index/add')}",
-                    {
-                        pname:$("#pname").val()
-                    },
-                        function(data){
-                            alert(data.msg);
-                    });
-            });
-        });
-    </script>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>工程管理系统</title>
+</head>
+<body>
+<h3>添加项目</h3>
+<form action="{:U('Index/add')}" method="post" enctype="multipart/form-data">
+    <table width="70%" border="1" cellpadding="5" cellspacing="0" bgcolor="#cccccc">
+        <tr>
+            <td align="right">项目名</td>
+            <td><input type="text" name="pname" placeholder="请输入项目名称"/></td>
+        </tr>
+        <tr>
+            <td align="right">项目描述</td>
+            <td><textarea rows="3" cols="20" name="desc"></textarea></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit"  value="添加项目"/></td>
+        </tr>
+    </table>
+</form>
 </body>
 </html>

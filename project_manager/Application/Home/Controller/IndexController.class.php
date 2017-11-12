@@ -20,15 +20,24 @@ class IndexController extends Controller {
         $this->display();
     }
 
+    public function show_list(){
+        $list = $this->model->select();
+        $this->assign('list', $list);
+        $this->display();
+    }
+
     public function show_add(){
         $this->display('edit');
     }
 
     public function add(){
         $pname = I('post.pname');
+        $desc = I('post.desc');
+
         $has_pname = $this->model->where(array('project_name'=>$pname))->find();
         if($has_pname){
-            $this->ajaxReturn(apiFail('已经存在此项目'));
+            $this->error('已经存在此项目');
+//            $this->ajaxReturn(apiFail('已经存在此项目'));
         }
         set_time_limit(0);
         ini_set('memory_limit', '512M');
@@ -37,14 +46,17 @@ class IndexController extends Controller {
         ini_set('max_input_time', '3200');
         ini_set('max_execution_time', '3200');
 
-        $this->service->create($pname);
+//        $this->service->create($pname);
         $data['project_name'] = $pname;
+        $data['desc'] = $desc;
         $data['create_time'] = date("Y-m-d H:i:s");
         $res = $this->model->add($data);
         if($res){
-            $this->ajaxReturn(apiSuccess('操作成功'));
+            $this->success('操作成功');
+//            $this->ajaxReturn(apiSuccess('操作成功'));
         }else{
-            $this->ajaxReturn(apiFail('操作失败'));
+            $this->error('操作失败');
+//            $this->ajaxReturn(apiFail('操作失败'));
         }
     }
 

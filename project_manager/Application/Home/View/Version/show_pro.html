@@ -1,71 +1,71 @@
-<include file="Public/header"/>
-<include file="Public/top" />
-<include file="Public/left" />
-    <div class="content clearfix">
-        <div class="main">
-            <!--右侧内容-->
-            <div class="cont">
-                    <div class="title">项目管理</div>
-                    <div class="details">
-                        <div class="details_operation clearfix">
-                            <div class="bui_select">
-                                <input type="button" value="添&nbsp;&nbsp;加" class="add">
-                            </div>
-                            <div class="fr">
-                                <div class="text">
-                                    <span>搜索</span>
-                                    <input type="text" value="" class="search">
-                                </div>
-                            </div>
-                        </div>
-                    <!--表格-->
-                    <table class="table" cellspacing="0" cellpadding="0">
-                        <thead>
-                                <tr>
-                                    <th width="15%">版本</th>
-                                    <th width="35%">上传</th>
-                                    <th>操作</th>
-                                </tr>
-                        </thead>
-                        <tbody>
-                            <volist name="list" id="vo">
-                                <tr>
-                                    <td align="center">v_{$vo.id}</td>
-                                    <td>
-                                        <form enctype="multipart/form-data" method="post" action="{:U('Version/upload',array('pid'=>$pid, 'version'=>$vo['id']))}">  
-                                            请选择你要上传文件：<input type="file" name="myfile">
-                                            <inpu type="hidden" name="pid" value="{$pid}">
-                                            <inpu type="hidden" name="version" value="{$vo['id']}">
-                                            <input type="submit" value="上传文件" class="btn">
-                                        </form>
-                                    </td>
-                                    <td align="center">
-                                            <a href="{:U('Version/build',array('pid'=>$pid, 'version'=>$vo['id']))}" class="btn">打包</a>
-                                            <input type="button" value="下载" class="btn">
-                                            <input type="button" value="删除" class="btn">
-                                    </td>
-                                </tr>
-                            </volist>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>工程管理系统</title>
+    <link rel="stylesheet" href="styles/backstage.css">
+</head>
+
+<body>
+<div class="details">
+    <div class="details_operation clearfix">
+        <div class="bui_select">
+            <input type="button" value="添&nbsp;&nbsp;加" class="add"  onclick="addVersion()">
         </div>
-        <include file="Public/left" />
+
     </div>
-    <script>
-        $(document).ready(function(){
-            $(".add").click(function(){
-                // $(this).hide();
-                $.post("{:U('Version/add')}",
-                    {
-                        pid:"{$pid}"
-                    },
-                        function(data){
-                            alert(data.msg);
-                    });
-            });
-        });
-    </script>
+    <!--表格-->
+    <table class="table" cellspacing="0" cellpadding="0">
+        <thead>
+        <tr>
+        <tr>
+            <th width="15%">版本</th>
+            <th width="35%">上传</th>
+            <th>操作</th>
+        </tr>
+        </tr>
+        </thead>
+        <tbody>
+        <volist name="list" id="vo">
+            <tr>
+                <td align="center">v_{$vo.id}</td>
+                <td>
+                    <form enctype="multipart/form-data" method="post" action="{:U('Version/upload',array('pid'=>$pid, 'version'=>$vo['id']))}">
+                        请选择你要上传文件：<input type="file" name="myfile">
+                        <inpu type="hidden" name="pid" value="{$pid}">
+                            <inpu type="hidden" name="version" value="{$vo['id']}">
+                                <input type="submit" value="上传文件" class="btn">
+                    </form>
+                </td>
+                <td align="center">
+                    <a href="{:U('Version/build',array('pid'=>$pid, 'version'=>$vo['id']))}" class="btn">打包</a>
+                    <input type="button" value="下载" class="btn">
+                    <input type="button" value="删除" class="btn">
+                </td>
+            </tr>
+        </volist>
+        <tr>
+            <td colspan="4"><?php echo "分页"?></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 </body>
+<script src="__PUBLIC__/src/js/jquery.min.js"></script>
+<script type="text/javascript">
+
+    function addVersion(){
+        $(".add").click(function(){
+            window.location="{:U('Version/show_add')}";
+        });
+    }
+    function editAdmin(id){
+        window.location="editAdmin.php?id="+id;
+    }
+    function delAdmin(id){
+        if(window.confirm("您确定要删除吗？删除之后不可以恢复哦！！！")){
+            window.location="doAdminAction.php?act=delAdmin&id="+id;
+        }
+    }
+</script>
 </html>
