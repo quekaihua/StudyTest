@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<!-- saved from url=(0060)http://192.168.1.105/admin/index.php?api=index.index&env=dev -->
+<html style="height: auto; min-height: 100%;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>首页|31HOT管理后台</title>
+<!-- Tell the browser to be responsive to screen width -->
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+<!-- Bootstrap 3.3.7 -->
+<link rel="stylesheet" href="./test1_files/bootstrap.min.css">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="./test1_files/font-awesome.min.css">
+<!-- Ionicons -->
+<link rel="stylesheet" href="./test1_files/ionicons.min.css">
+<!-- jvectormap -->
+<link rel="stylesheet" href="./test1_files/jquery-jvectormap.css">
+
+<!-- Select2 -->
+<link rel="stylesheet" href="./test1_files/select2.min.css">
+
+<!-- Theme style -->
+<link rel="stylesheet" href="./test1_files/AdminLTE.min.css">
+<!-- iCheck -->
+<link rel="stylesheet" href="./test1_files/blue.css">
+<!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
+<link rel="stylesheet" href="./test1_files/skin-black-light.min.css">
+
+<!-- toastr -->
+<link rel="stylesheet" href="./test1_files/toastr.min.css">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="static/adminlte/other/html5shiv.min.js" type="text/javascript"></script>
+<script src="static/adminlte/other/respond.min.js" type="text/javascript"></script>
+<![endif]-->
+
+<!-- Google Font -->
+<!-- <link rel="stylesheet" href="static/adminlte/other/fonts.googleapis.com_css.css" /> -->
+
+<style type="text/css">
+.modal-body{
+	word-wrap: break-word;
+	word-break: break-all;
+}
+pre {
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
+.treeview-menu .active .fa{
+	color: #FF0000;
+}
+</style>
+<!-- DataTables -->
+<link rel="stylesheet" href="./test1_files/dataTables.bootstrap.min.css">
+<style type="text/css">
+.box-header small a{
+	margin-left: 10px;
+}
+#online_date{
+	margin-left: 10px;
+}
+#appselector{
+	margin: 10px 0px;
+}
+</style>
+<style type="text/css">/* Chart.js */
+@-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style></head>
+<body class="skin-black-light sidebar-mini" style="height: auto; min-height: 100%;">
+<div class="wrapper" style="height: auto; min-height: 100%;">
+	<header class="main-header">
+	<!-- Logo -->
+	<a href="http://192.168.1.105/admin/index.php?api=index.index&amp;env=dev#" class="logo" onclick="return false;">
+		<!-- mini logo for sidebar mini 50x50 pixels -->
+		<span class="logo-mini"><b>:)</b></span>
+  
+	
+        
+                    <!-- logo for regular state and mobile devices -->
+            <span class="logo-lg"><b>棋牌管理后台</b>(测试)</span>
+        		
+	
+  
+	</a>
+	<!-- Header Navbar: style can be found in header.less -->
+	<nav class="navbar navbar-static-top">
+		<!-- Sidebar toggle button-->
+		<a href="http://192.168.1.105/admin/index.php?api=index.index&amp;env=dev#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+			<span class="sr-only">切换导航</span>
+			<span class="icon-bar"></span>
+		</a>
+		<!-- Navbar Right Menu -->
+		<div class="navbar-custom-menu">
+			<ul class="nav navbar-nav">
+				<!-- Messages: style can be found in dropdown.less-->
+				<li class="dropdown">
+					<a href="http://192.168.1.105/admin/index.php?api=index.index&amp;env=dev#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+						<i class="fa fa-home"></i><span class="label label-warning">切换</span> 
+					</a>
+					<div class="dropdown-menu row">
+						<div class="col-md-12 text-center">
+							<p><a href="http://192.168.1.105/admin/index.php?env=product&amp;api=index.index" class="btn btn-sm btn-primary">切换到正式环境</a></p>
+							<p><a href="http://192.168.1.105/admin/index.php?api=index.index&amp;env=dev#" class="btn btn-sm btn-default disabled">切换到测试环境</a></p>
+							<p><a href="http://192.168.1.105/admin/index.php?env=product&amp;api=mobile.index.index" class="btn btn-sm btn-info">切换手机版</a></p>
+						</div>
+					</div>
+				</li>
+	
+				<!-- User Account: style can be found in dropdown.less -->
+				<li class="dropdown user user-menu">
+					<a href="http://192.168.1.105/admin/index.php?api=index.index&amp;env=dev#" class="dropdown-toggle" data-toggle="dropdown">
+						<img src="./test1_files/b2.jpg" class="user-image" alt="用户头像">
+						<span class="hidden-xs">阙开华(kh)</span>
+					</a>
+					<ul class="dropdown-menu">
+						<!-- User image -->
+						<li class="user-header">
+							<img src="./test1_files/b2.jpg" class="img-circle" alt="用户头像">
+							<p>
+								阙开华(kh)<br>
+								<span class="label label-warning">PHP开发</span>
+							</p>
+						</li>
+						<li class="user-body">
+							<div class="row">
+								<div class="col-md-12 col-xs-12">
+									<button class="btn btn-xs btn-info btn-block" onclick="document.location=&#39;index.php?api=system.admin&amp;env=dev&#39;;">管理员账号管理</button>
+									<button class="btn btn-xs btn-primary btn-block" onclick="document.location=&#39;index.php?api=system.role&amp;env=dev&#39;;">管理员角色管理</button>
+									<button class="btn btn-xs btn-warning btn-block" onclick="document.location=&#39;index.php?api=system.menu&amp;env=dev&#39;;">侧边栏菜单管理</button>
+									<button class="btn btn-xs btn-danger btn-block" onclick="document.location=&#39;index.php?api=system.privilege&amp;env=dev&#39;;">访问权限管理</button>
+								</div>
+							</div>
+						</li>
+						<!-- Menu Footer-->
+						<li class="user-footer">
+							<div class="pull-left">
+								<a href="http://192.168.1.105/admin/index.php?api=account.pwd&amp;env=dev" class="btn btn-default btn-sm">修改密码</a>
+							</div>
+							<div class="pull-right">
+								<a href="http://192.168.1.105/admin/index.php?api=public.logout&amp;env=dev" class="btn btn-default btn-sm">退出登录</a>
+							</div>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	</header>
+	<!-- Left side column. contains the logo and sidebar -->
+	<aside class="main-sidebar">
+		<!-- sidebar: style can be found in sidebar.less -->
+		<section class="sidebar">
+						<!-- search form -->
+			<form action="http://192.168.1.105/admin/index.php" method="get" class="sidebar-form" onsubmit="return this.mid.value != &#39;&#39; &amp;&amp; !/\D/.test(this.mid.value);">
+				<input type="hidden" name="api" value="user.search">
+				<input type="hidden" name="env" value="dev">
+				<div class="input-group">
+					<input type="text" name="mid" class="form-control" placeholder="输入mid搜索用户" value="">
+					<span class="input-group-btn"><button type="submit" name="" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button></span>
+				</div>
+			</form>
+						<!-- /.search form -->
+			<!-- sidebar menu: : style can be found in sidebar.less -->
+			<ul class="sidebar-menu tree" data-widget="tree">
+			<li class="header">菜单列表</li>
+				<li class="active">
+					<a href="http://192.168.1.105/admin/index.php?api=index.index&amp;env=dev">
+						<i class="fa fa-smile-o"></i> <span>首页</span>
+					</a>
+				</li>
+				<li class="treeview ">
+					<a href="http://192.168.1.105/admin/index.php?api=index.index&amp;env=dev#">
+						<i class="fa fa-pie-chart"></i> <span>数据统计</span>
+						<span class="pull-right-container">
+							<i class="fa fa-angle-left pull-right"></i>
+						</span>
+					</a>
+					<ul class="treeview-menu">
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=dau.index&amp;env=dev"><i class="fa fa-circle-o"></i> 活跃数据</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=moneystat.index&amp;env=dev"><i class="fa fa-circle-o"></i> 发放与消耗</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=room.playing&amp;env=dev"><i class="fa fa-circle-o"></i> 实时数据</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=playstat.index&amp;env=dev"><i class="fa fa-circle-o"></i> 玩牌数据</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=paymentstat.index&amp;env=dev"><i class="fa fa-circle-o"></i> 付费数据</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=playstat.detail&amp;env=dev"><i class="fa fa-circle-o"></i> 牌局详情</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=newbietask.stat&amp;env=dev"><i class="fa fa-calendar-plus-o"></i> 新手任务统计</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=moneydistribution.index&amp;env=dev"><i class="fa fa-circle-o"></i> 资产分布</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=userloginstat.index&amp;env=dev"><i class="fa fa-circle-o"></i> 用户留存</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=versionstat.index&amp;env=dev"><i class="fa fa-circle-o"></i> 版本分布</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=payscenestat.index&amp;env=dev"><i class="fa fa-circle-o"></i> 付费场景统计</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=sharestat.index&amp;env=dev"><i class="fa fa-circle-o"></i> 分享统计</a>
+					</li>
+					</ul>
+				</li>
+				<li class="treeview ">
+					<a href="http://192.168.1.105/admin/index.php?api=index.index&amp;env=dev#">
+						<i class="fa fa-user"></i> <span>用户管理</span>
+						<span class="pull-right-container">
+							<i class="fa fa-angle-left pull-right"></i>
+						</span>
+					</a>
+					<ul class="treeview-menu">
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=review.index&amp;env=dev"><i class="fa fa-circle-o"></i> 操作数据审核</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=user.moneyRank&amp;env=dev"><i class="fa fa-circle-o"></i> 财富排行榜</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=user.overview&amp;env=dev"><i class="fa fa-circle-o"></i> 用户概览</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=user.batchSetMoney&amp;env=dev"><i class="fa fa-circle-o"></i> 批量补币</a>
+					</li>
+					</ul>
+				</li>
+				<li class="">
+					<a href="http://192.168.1.105/admin/index.php?api=notice.index&amp;env=dev">
+						<i class="fa fa-commenting"></i> <span>公告</span>
+					</a>
+				</li>
+				<li class="treeview ">
+					<a href="http://192.168.1.105/admin/index.php?api=index.index&amp;env=dev#">
+						<i class="fa fa-refresh"></i> <span>版本升级</span>
+						<span class="pull-right-container">
+							<i class="fa fa-angle-left pull-right"></i>
+						</span>
+					</a>
+					<ul class="treeview-menu">
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=upgrade.index&amp;env=dev"><i class="fa fa-cubes"></i> 应用升级</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=upgrade.hot&amp;env=dev"><i class="fa fa-cloud-download"></i> 热更新文件管理</a>
+					</li>
+					</ul>
+				</li>
+				<li class="treeview ">
+					<a href="http://192.168.1.105/admin/index.php?api=index.index&amp;env=dev#">
+						<i class="fa fa-paypal"></i> <span>支付与商城</span>
+						<span class="pull-right-container">
+							<i class="fa fa-angle-left pull-right"></i>
+						</span>
+					</a>
+					<ul class="treeview-menu">
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=payment.index&amp;env=dev"><i class="fa fa-circle-o"></i> 订单列表</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=payment.e_cfg&amp;env=dev"><i class="fa fa-circle-o"></i> 支付方式</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=shop.index&amp;env=dev"><i class="fa fa-circle-o"></i> 应用商城</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=object.index&amp;env=dev"><i class="fa fa-truck"></i> 实物发放</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=payment.failed&amp;env=dev"><i class="fa fa-info-circle"></i> 异常订单</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=thirdpay.whitelist&amp;env=dev"><i class="fa fa-calendar-plus-o"></i> 第三方支付白名单</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=exshop.cfg&amp;env=dev"><i class="fa fa-circle-o"></i> 兑换商城配置</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=exshop.items&amp;env=dev"><i class="fa fa-circle-o"></i> 兑换商品管理</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=timedgift.index&amp;env=dev"><i class="fa fa-circle-o"></i> 限时礼包配置</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=newShop.index&amp;env=dev"><i class="fa fa-cart-plus"></i> 新应用商场</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=webpay.index&amp;env=dev"><i class="fa fa-circle-o"></i> 网页订单</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=newShop.index&amp;env=dev"><i class="fa fa-cart-plus"></i> 新应用商场</a>
+					</li>
+					</ul>
+				</li>
+				<li class="treeview ">
+					<a href="http://192.168.1.105/admin/index.php?api=index.index&amp;env=dev#">
+						<i class="fa fa-gear"></i> <span>玩牌配置</span>
+						<span class="pull-right-container">
+							<i class="fa fa-angle-left pull-right"></i>
+						</span>
+					</a>
+					<ul class="treeview-menu">
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=room.index&amp;env=dev"><i class="fa fa-circle-o"></i> 房间管理</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=playgamecfg.index&amp;env=dev"><i class="fa fa-circle-o"></i> 开关配置</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=game.config&amp;env=dev"><i class="fa fa-circle-o"></i> 游戏配置</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=room.levels&amp;env=dev"><i class="fa fa-circle-o"></i> 场次配置</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=usertatter.index&amp;env=dev"><i class="fa fa-circle-o"></i> 碎片管理</a>
+					</li>
+					</ul>
+				</li>
+				<li class="treeview ">
+					<a href="http://192.168.1.105/admin/index.php?api=index.index&amp;env=dev#">
+						<i class="fa fa-umbrella"></i> <span>反馈与举报</span>
+						<span class="pull-right-container">
+							<i class="fa fa-angle-left pull-right"></i>
+						</span>
+					</a>
+					<ul class="treeview-menu">
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=feedback.index&amp;env=dev"><i class="fa fa-bug"></i> 用户反馈</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=complaint.index&amp;env=dev"><i class="fa fa-warning"></i> 用户举报</a>
+					</li>
+					</ul>
+				</li>
+				<li class="treeview ">
+					<a href="http://192.168.1.105/admin/index.php?api=index.index&amp;env=dev#">
+						<i class="fa fa-dollar"></i> <span>金币配置</span>
+						<span class="pull-right-container">
+							<i class="fa fa-angle-left pull-right"></i>
+						</span>
+					</a>
+					<ul class="treeview-menu">
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=index.index&amp;env=dev#&amp;env=dev"><i class="fa fa-circle-o"></i> 数值配置</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=loginaward.s_cfg&amp;env=dev"><i class="fa fa-circle-o"></i> 每日登录</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=bigwheel.s_cfg&amp;env=dev"><i class="fa fa-circle-o"></i> 大转盘</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=giftcard.index&amp;env=dev"><i class="fa fa-credit-card"></i> 礼物卡管理</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=regis7daysrwd.s_cfg&amp;env=dev"><i class="fa fa-circle-o"></i> 新用户七天奖励</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=recall.s_cfg&amp;env=dev"><i class="fa fa-circle-o"></i> 用户召回奖励</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=bankrupt.cfg&amp;env=dev"><i class="fa fa-circle-o"></i> 破产配置</a>
+					</li>
+					</ul>
+				</li>
+				<li class="treeview ">
+					<a href="http://192.168.1.105/admin/index.php?api=index.index&amp;env=dev#">
+						<i class="fa fa-calendar-times-o"></i> <span>运营活动</span>
+						<span class="pull-right-container">
+							<i class="fa fa-angle-left pull-right"></i>
+						</span>
+					</a>
+					<ul class="treeview-menu">
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=worldcup.index&amp;env=dev"><i class="fa fa-futbol-o"></i> 世界杯竞猜</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=activity.index&amp;env=dev"><i class="fa fa-circle-o"></i> 日常活动配置</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=activityStat.index&amp;env=dev"><i class="fa "></i> 活动统计</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=activity.treasure&amp;env=dev"><i class="fa fa-circle-o"></i> 夺宝活动</a>
+					</li>
+					</ul>
+				</li>
+				<li class="treeview ">
+					<a href="http://192.168.1.105/admin/index.php?api=index.index&amp;env=dev#">
+						<i class="fa fa-paperclip"></i> <span>杂项</span>
+						<span class="pull-right-container">
+							<i class="fa fa-angle-left pull-right"></i>
+						</span>
+					</a>
+					<ul class="treeview-menu">
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=index.index&amp;env=dev#&amp;env=dev"><i class="fa fa-circle-o"></i> 停服设置</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=misc.broadcast&amp;env=dev"><i class="fa fa-circle-o"></i> 系统广播</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=cdn.image&amp;env=dev"><i class="fa fa-file-image-o"></i> CDN图片管理</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=oplog.get&amp;env=dev"><i class="fa fa-circle-o"></i> 操作记录</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=review.lists&amp;env=dev"><i class="fa fa-circle-o"></i> 审核列表</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=singlecfg.index&amp;env=dev"><i class="fa fa-circle-o"></i> 配置集合</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=misc.contact&amp;env=dev"><i class="fa fa-circle-o"></i> 联系我们</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=push.index&amp;env=dev"><i class="fa fa-circle-o"></i> 系统推送</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=mail.index&amp;env=dev"><i class="fa fa-envelope"></i> 系统信箱</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=mail.index&amp;env=dev"><i class="fa fa-envelope"></i> 系统信箱</a>
+					</li>
+					</ul>
+				</li>
+				<li class="">
+					<a href="http://192.168.1.105/admin/index.php?api=toolbox.index&amp;env=dev">
+						<i class="fa fa-code"></i> <span>开发者工具</span>
+					</a>
+				</li>
+				<li class="treeview ">
+					<a href="http://192.168.1.105/admin/index.php?api=index.index&amp;env=dev#">
+						<i class="fa fa-calendar-plus-o"></i> <span>任务配置</span>
+						<span class="pull-right-container">
+							<i class="fa fa-angle-left pull-right"></i>
+						</span>
+					</a>
+					<ul class="treeview-menu">
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=newbietask.cfg&amp;env=dev"><i class="fa fa-bicycle"></i> 新手任务</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=dailytask.index&amp;env=dev"><i class="fa fa-motorcycle"></i> 每日任务配置</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=box.index&amp;env=dev"><i class="fa fa-circle-o"></i> 牌局宝箱</a>
+					</li>
+					</ul>
+				</li>
+				<li class="">
+					<a href="http://192.168.1.105/admin/index.php?api=partner:paymentstat.index&amp;env=dev">
+						<i class="fa fa-pie-chart"></i> <span>付费统计(联运)</span>
+					</a>
+				</li>
+				<li class="">
+					<a href="http://192.168.1.105/admin/index.php?api=partner:payment.index&amp;env=dev">
+						<i class="fa fa-dollar"></i> <span>订单列表(联运)</span>
+					</a>
+				</li>
+				<li class="treeview ">
+					<a href="http://192.168.1.105/admin/index.php?api=oa.index&amp;env=dev">
+						<i class="fa fa-file"></i> <span>内部OA系统</span>
+						<span class="pull-right-container">
+							<i class="fa fa-angle-left pull-right"></i>
+						</span>
+					</a>
+					<ul class="treeview-menu">
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=applyrest.index&amp;env=dev"><i class="fa fa-circle-o"></i> 请假申请</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=restapprove.index&amp;env=dev"><i class="fa fa-circle-o"></i> 请假审批</a>
+					</li>
+					<li class="">
+						<a href="http://192.168.1.105/admin/index.php?api=reststat.index&amp;env=dev"><i class="fa fa-circle-o"></i> 休假统计</a>
+					</li>
+					</ul>
+				</li>
+			</ul>
+		</section>
+		<!-- /.sidebar -->
+	</aside>
+	<!-- Content Wrapper. Contains page content -->
+	<div class="content-wrapper" style="min-height: 818px;">
+			<!-- Content Header (Page header) -->
+			<section class="content-header">
+				<h1>首页<small>欢迎您回来~</small>
+										
+				</h1>
+				<ol class="breadcrumb">
+					<li class="active">首页</li>
+				</ol>
+			</section>
+		<!-- Main content -->
+		<section class="content">
+			<div class="row">
+				<!-- 在线在玩 -->
+				<div class="col-md-12">
+					<div id="appselector">
+						<b>切换应用：</b>
+						<button class="btn btn-default btn-sm active" data-value="0">全部应用</button>
+						<button class="btn btn-default btn-sm" data-ext="102001">安卓-主版本</button>
+						<button class="btn btn-default btn-sm" data-ext="102002">安卓-三公包</button>
+						<button class="btn btn-default btn-sm" data-ext="102003">安卓-马甲包</button>
+						<button class="btn btn-default btn-sm" data-ext="102005">安卓-REMI包</button>
+						<button class="btn btn-default btn-sm" data-ext="102006">安卓-接龙包</button>
+						<button class="btn btn-default btn-sm" data-ext="102008">安卓-REMI马甲包</button>
+						<button class="btn btn-default btn-sm" data-ext="102009">安卓-接龙马甲包</button>
+						<button class="btn btn-default btn-sm" data-ext="102010">安卓-十三张(新大厅)</button>
+						<button class="btn btn-default btn-sm" data-ext="102011">安卓-十三张(老大厅)</button>
+						<button class="btn btn-default btn-sm" data-ext="102012">安卓-三公马甲包</button>
+					</div>
+					<!-- AREA CHART -->
+					<div class="box box-primary">
+						<div class="box-header with-border form-inline">
+							<h3 class="box-title">实时在线在玩</h3>
+							<small id="online_links">
+								<a href="http://192.168.1.105/admin/index.php?api=index.index&amp;env=dev#" data-ext="1">最近2小时</a>
+								<a href="http://192.168.1.105/admin/index.php?api=index.index&amp;env=dev#" data-ext="2">最近4小时</a>
+								<a href="http://192.168.1.105/admin/index.php?api=index.index&amp;env=dev#" data-ext="3">最近8小时</a>
+								<a href="http://192.168.1.105/admin/index.php?api=index.index&amp;env=dev#" data-ext="4">最近12小时</a>
+								<a href="http://192.168.1.105/admin/index.php?api=index.index&amp;env=dev#" data-ext="0">今天</a>
+								<a href="http://192.168.1.105/admin/index.php?api=index.index&amp;env=dev#" data-ext="5">最近24小时</a>
+								<a href="http://192.168.1.105/admin/index.php?api=index.index&amp;env=dev#" data-ext="6">最近48小时</a>
+								<a href="http://192.168.1.105/admin/index.php?api=index.index&amp;env=dev#" data-ext="7">最近72小时</a>
+							</small>
+							<select name="" id="online_date" class="form-control select2 select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+																<option value="1562518800">2019-07-08</option>
+																<option value="1562432400">2019-07-07</option>
+																<option value="1562346000">2019-07-06</option>
+																<option value="1562259600">2019-07-05</option>
+																<option value="1562173200">2019-07-04</option>
+																<option value="1562086800">2019-07-03</option>
+																<option value="1562000400">2019-07-02</option>
+																<option value="1561914000">2019-07-01</option>
+																<option value="1561827600">2019-06-30</option>
+																<option value="1561741200">2019-06-29</option>
+																<option value="1561654800">2019-06-28</option>
+																<option value="1561568400">2019-06-27</option>
+																<option value="1561482000">2019-06-26</option>
+																<option value="1561395600">2019-06-25</option>
+																<option value="1561309200">2019-06-24</option>
+																<option value="1561222800">2019-06-23</option>
+																<option value="1561136400">2019-06-22</option>
+																<option value="1561050000">2019-06-21</option>
+																<option value="1560963600">2019-06-20</option>
+																<option value="1560877200">2019-06-19</option>
+																<option value="1560790800">2019-06-18</option>
+																<option value="1560704400">2019-06-17</option>
+																<option value="1560618000">2019-06-16</option>
+																<option value="1560531600">2019-06-15</option>
+																<option value="1560445200">2019-06-14</option>
+																<option value="1560358800">2019-06-13</option>
+																<option value="1560272400">2019-06-12</option>
+																<option value="1560186000">2019-06-11</option>
+																<option value="1560099600">2019-06-10</option>
+																<option value="1560013200">2019-06-09</option>
+															</select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 120px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-online_date-container"><span class="select2-selection__rendered" id="select2-online_date-container" title="2019-07-08">2019-07-08</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+							<div class="pull-right">
+								<button class="btn btn-default btn-sm" id="online_refresh"><i class="fa fa-refresh"></i></button>
+							</div>
+
+						</div>
+						<div class="box-body">
+							<div class="chart"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+								<canvas id="online_canvas" style="height: 538px; display: block; width: 1623px;" width="1623" height="538" class="chartjs-render-monitor"></canvas>
+							</div>
+						</div>
+						<!-- /.box-body -->
+					</div>
+					<!-- /.box -->
+				</div>
+				<!-- 每日活跃 -->
+				<div class="col-md-6 col-xs-12">
+					<!-- AREA CHART -->
+					<div class="box box-warning">
+						<div class="box-header with-border">
+							<h3 class="box-title">每日活跃(含新增)</h3>
+							<small id="dau_links">
+								<a href="http://192.168.1.105/admin/index.php?api=index.index&amp;env=dev#" data-ext="1">最近7天</a>
+								<a href="http://192.168.1.105/admin/index.php?api=index.index&amp;env=dev#" data-ext="2">最近15天</a>
+								<a href="http://192.168.1.105/admin/index.php?api=index.index&amp;env=dev#" data-ext="3">最近30天</a>
+							</small>
+						</div>
+						<div class="box-body">
+							<div class="chart"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+								<canvas id="dau_canvas" style="height: 460px; display: block; width: 787px;" width="787" height="460" class="chartjs-render-monitor"></canvas>
+							</div>
+						</div>
+						<!-- /.box-body -->
+					</div>
+					<!-- /.box -->
+				</div>
+				<!-- 每日新增 -->
+				<div class="col-md-6 col-xs-12">
+					<!-- AREA CHART -->
+					<div class="box box-info">
+						<div class="box-header with-border">
+							<h3 class="box-title">每日新增</h3>
+							<small id="reg_links">
+								<a href="http://192.168.1.105/admin/index.php?api=index.index&amp;env=dev#" data-ext="1">最近7天</a>
+								<a href="http://192.168.1.105/admin/index.php?api=index.index&amp;env=dev#" data-ext="2">最近15天</a>
+								<a href="http://192.168.1.105/admin/index.php?api=index.index&amp;env=dev#" data-ext="3">最近30天</a>
+							</small>
+						</div>
+						<div class="box-body">
+							<div class="chart"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+								<canvas id="reg_canvas" style="height: 460px; display: block; width: 787px;" width="787" height="460" class="chartjs-render-monitor"></canvas>
+							</div>
+						</div>
+						<!-- /.box-body -->
+					</div>
+					<!-- /.box -->
+				</div>
+				<!-- 每日玩牌 -->
+				<div class="col-md-6 col-xs-12">
+					<!-- AREA CHART -->
+					<div class="box box-default">
+						<div class="box-header with-border">
+							<h3 class="box-title">每日玩牌</h3>
+							<small id="play_links">
+								<a href="http://192.168.1.105/admin/index.php?api=index.index&amp;env=dev#" data-ext="1">最近7天</a>
+								<a href="http://192.168.1.105/admin/index.php?api=index.index&amp;env=dev#" data-ext="2">最近15天</a>
+								<a href="http://192.168.1.105/admin/index.php?api=index.index&amp;env=dev#" data-ext="3">最近30天</a>
+							</small>
+						</div>
+						<div class="box-body">
+							<div class="chart"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+								<canvas id="play_canvas" style="height: 460px; display: block; width: 787px;" width="787" height="460" class="chartjs-render-monitor"></canvas>
+							</div>
+						</div>
+						<!-- /.box-body -->
+					</div>
+					<!-- /.box -->
+				</div>
+				<!-- 每日付费 -->
+				<div class="col-md-6 col-xs-12">
+					<!-- AREA CHART -->
+					<div class="box box-danger">
+						<div class="box-header with-border">
+							<h3 class="box-title">每日付费</h3>
+							<small id="pay_links">
+								<a href="http://192.168.1.105/admin/index.php?api=index.index&amp;env=dev#" data-ext="1">最近7天</a>
+								<a href="http://192.168.1.105/admin/index.php?api=index.index&amp;env=dev#" data-ext="2">最近15天</a>
+								<a href="http://192.168.1.105/admin/index.php?api=index.index&amp;env=dev#" data-ext="3">最近30天</a>
+							</small>
+						</div>
+						<div class="box-body">
+							<div class="chart"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+								<canvas id="pay_canvas" style="height: 460px; display: block; width: 787px;" width="787" height="460" class="chartjs-render-monitor"></canvas>
+							</div>
+						</div>
+						<!-- /.box-body -->
+					</div>
+					<!-- /.box -->
+				</div>
+				<!-- 每日金流 -->
+				<div class="col-md-12">
+					<!-- AREA CHART -->
+					<div class="box box-success">
+						<div class="box-header with-border">
+							<h3 class="box-title">每日金流</h3>
+							<small id="money_links">
+								<a href="http://192.168.1.105/admin/index.php?api=index.index&amp;env=dev#" data-ext="1">最近7天</a>
+								<a href="http://192.168.1.105/admin/index.php?api=index.index&amp;env=dev#" data-ext="2">最近15天</a>
+								<a href="http://192.168.1.105/admin/index.php?api=index.index&amp;env=dev#" data-ext="3">最近30天</a>
+							</small>
+						</div>
+						<div class="box-body">
+							<div class="chart"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+								<canvas id="money_canvas" style="height: 538px; display: block; width: 1623px;" width="1623" height="538" class="chartjs-render-monitor"></canvas>
+							</div>
+						</div>
+						<!-- /.box-body -->
+					</div>
+					<!-- /.box -->
+				</div>
+			</div>
+		</section>
+		<!-- /.content -->
+	</div>
+	<!-- /.content-wrapper -->
+	<footer class="main-footer">
+		<div class="pull-right hidden-xs"><b>Version</b> 1.0.0</div>
+		<strong>版权所有 © 2018-2068 <a href="http://192.168.1.105/admin/index.php?api=index.index&amp;env=dev#">悦玩科技</a>.</strong> 保留所有权利
+	</footer>
+</div>
+<!-- ./wrapper -->
+<div class="modal modal-default fade" id="alert">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+				<h4 class="modal-title"></h4>
+			</div>
+			<div class="modal-body">
+				<p></p>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-outline pull-left" data-dismiss="modal">确定</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+<div class="modal modal-danger fade" id="confirm">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+				<h4 class="modal-title"></h4>
+			</div>
+			<div class="modal-body">
+				<p></p>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-outline pull-left" data-dismiss="modal">取消</button>
+				<button class="btn btn-outline pull-right" id="confirmbtn">确定</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+<!-- oplog modal start -->
+<div class="modal modal-default fade" id="oplog">
+	<div class="modal-dialog" style="width:800px;">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+				<h4 class="modal-title">操作记录</h4>
+			</div>
+			<div class="modal-body">
+				<table id="oplogtable" class="table table-bordered">
+					<thead>
+						<tr>
+							<th>时间</th>
+							<th>操作人</th>
+							<th>操作结果</th>
+							<th>请求参数</th>
+						</tr>
+					</thead>
+					<tbody>
+
+					</tbody>
+				</table>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-outline pull-left" data-dismiss="modal">取消</button>
+				<button class="btn btn-outline pull-right" id="confirmbtn">确定</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+<!-- oplog modal end -->
+
+<!-- oplog modal start -->
+<div class="modal modal-default fade" id="show-params">
+	<div class="modal-dialog" style="width:1600px;">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+				<h4 class="modal-title">配置参数</h4>
+			</div>
+			<div class="modal-body">
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th style="text-align:center; background:#CDECDE;">当前</th>
+							<th style="text-align:center;">更早</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="author-and-time">
+							<td style="text-align:center;"></td>
+							<td style="text-align:center;"></td>
+						</tr>
+						<tr class="post-data-div">
+							<td></td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-outline pull-left" data-dismiss="modal">取消</button>
+				<button class="btn btn-outline pull-right" id="confirmbtn">确定</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+<!-- oplog modal end -->
+
+
+<!-- reviewRemark modal start -->
+<div class="modal modal-default fade" id="reviewbox">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+				<h4 class="modal-title">添加操作说明</h4>
+			</div>
+			<div class="modal-body">
+				<div class="form-group">
+					<label for="remark"><i class="fa fa-pencil-square-o"></i> 操作说明:</label>
+					<input type="text" maxlength="200" style="width:70%;" class="form-control" name="remark" placeholder="输入简短的操作说明">
+				</div>
+				<div class="form-group">
+					<label for="reviewtime" class="control-label">
+						<div class="iradio_square-blue" aria-checked="false" aria-disabled="false" style="position: relative;"><input type="radio" name="emergence" class="flat-red" value="1" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
+						紧急
+					</label>
+					&nbsp;&nbsp;&nbsp;
+					<label for="reviewtime" class="control-label">
+						<div class="iradio_square-blue checked" aria-checked="false" aria-disabled="false" style="position: relative;"><input type="radio" name="emergence" class="flat-red" value="2" checked="" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
+						一般
+					</label>
+					&nbsp;&nbsp;&nbsp;
+					<label for="reviewtime" class="control-label">
+						<div class="iradio_square-blue" aria-checked="false" aria-disabled="false" style="position: relative;"><input type="radio" name="emergence" class="flat-red" value="3" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
+						不急
+					</label>
+					&nbsp;&nbsp;&nbsp;
+					<a href="javascript:;" title="紧急：半小时内审核，一般：4小时内审核，不急：当天审核" alt="紧急：半小时内审核，一般：4小时内审核，不急：当天审核"><i class="fa fa-question-circle"></i></a>
+				</div>
+				<input type="hidden" name="reviewid" value="">
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-info pull-right" style="margin-left:2rem;" id="submit-review-post">提交审核</button>
+				<button class="btn btn-default pull-right" data-dismiss="modal">取消</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- /.modal --><!-- jQuery 3 -->
+<script src="./test1_files/jquery.min.js.下载" type="text/javascript"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="./test1_files/bootstrap.min.js.下载" type="text/javascript"></script>
+<!-- FastClick -->
+<script src="./test1_files/fastclick.js.下载" type="text/javascript"></script>
+<!-- AdminLTE App -->
+<script src="./test1_files/adminlte.min.js.下载" type="text/javascript"></script>
+<!-- iCheck -->
+<script src="./test1_files/icheck.min.js.下载" type="text/javascript"></script>
+<!-- toastr -->
+<script src="./test1_files/toastr.min.js.下载"></script>
+
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<!-- <script src="static/adminlte/dist/js/pages/dashboard2.js" type="text/javascript"></script> -->
+<!-- AdminLTE for demo purposes -->
+<!-- <script src="static/adminlte/dist/js/demo.js" type="text/javascript"></script> -->
+<script type="text/javascript">
+var $ENV = 'dev';
+var $URL = 'index.php';
+var $API = 'index.index';
+var $APP = '';
+var $ReviewCheck =  false ;
+
+toastr.options.closeButton = true;
+toastr.options.positionClass = "toast-top-right";
+toastr.timeOut = {timeOut:1500};
+$('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+	checkboxClass: 'icheckbox_square-blue',
+	radioClass   : 'iradio_square-blue'
+});
+
+function modalAlert(title, text, style, autoClose) {
+	var el = $('#alert');
+	el.attr('class', 'modal ' + style + ' fade');
+	$('.modal-title', el).html(title);
+	$('p', el).html(text);
+	el.modal('show');
+	if(autoClose) {
+		setTimeout(function(){
+			el.modal('hide');
+		}, 2000);
+	}
+}
+
+function modalConfirm(title, text, cb, style) {
+	var el = $('#confirm'), btn = $('#confirmbtn'), style = (style || 'modal-danger');
+	el.attr('class', 'modal ' + style + ' fade');
+	$('.modal-title', el).html(title);
+	$('p', el).html(text);
+	if(cb) {
+		btn.one('click', cb);
+	}
+	el.modal('show');
+}
+
+function formatNumber(n) {
+	n = parseInt(n);
+	if(n == NaN) {
+		return 0;
+	}
+	var sign = n < 0 ? '-' : '';
+	var str = '' + Math.abs(n), ret = '';
+	var mod = str.length % 3;
+	if(mod > 0) {
+		ret += str.substr(0, mod) + ',';
+	}
+	for(var i=mod; i<str.length; i+=3) {
+		ret += str.substr(i, 3) + ',';
+	}
+	return sign + ret.substr(0, ret.length - 1);
+}
+
+function formatfloat(num, decimal) {
+	var s = num + '';
+	var idx = s.indexOf('.');
+	if(idx > -1 && s.length > idx + decimal + 1) {
+		return s.substr(0, idx + decimal + 1);
+	} else {
+		return s;
+	}
+}
+
+function size2str(size) {
+	if(size < 1024) {
+		return size + '字节';
+	} else if(size < 1024*1024) {
+		return formatfloat(size / 1024, 2) + 'K';
+	} else {
+		return formatfloat(size / 1024 / 1024, 2) + 'M';
+	}
+}
+
+function time2str(timestamp) {
+	var d = new Date(timestamp * 1000);
+	return d.toLocaleString();
+}
+
+function money2str(money) {
+	if(money < 1000) {
+		return money;
+	} else if(money < 1000000) {
+		var mod = money % 1000;
+		var intstr = (money - mod) / 1000;
+		var floatstr = (mod / 1000) + '';
+		return mod == 0 ? intstr + 'K' : intstr + floatstr.substr(1, 3) + 'K';
+	} else if(money < 1000000000) {
+		var mod = money % 1000000;
+		var intstr = (money - mod) / 1000000;
+		var floatstr = (mod / 1000000) + '';
+		return mod == 0 ? intstr + 'M' : intstr + floatstr.substr(1, 3) + 'M';
+	} else if(money < 1000000000000) {
+		var mod = money % 1000000000;
+		var intstr = (money - mod) / 1000000000;
+		var floatstr = (mod / 1000000000) + '';
+		return mod == 0 ? intstr + 'B' : intstr + floatstr.substr(1, 3) + 'B';
+	} else {
+		var mod = money % 1000000000000;
+		var intstr = (money - mod) / 1000000000000;
+		var floatstr = (mod / 1000000000000) + '';
+		return mod == 0 ? intstr + 'T' : intstr + floatstr.substr(1, 3) + 'T';
+	}
+}
+
+//点击查看日志记录
+var records = {};
+var rapi = '';
+$(".content-header").on("click","button.show-oplog-modals", function(){
+	rapi = $(this).attr("rapi");
+	$.post($URL,{
+		env:$ENV,
+		api:"oplog.ajaxGets",
+		rapi:rapi
+	},function(rsp){
+		if( rsp.errno != 0 ) {
+			modalAlert("出错了", rsp.error);
+			return;
+		}
+		records = rsp.data;
+		var rec;
+		var recHtml = "";
+		for( idx in records ) {
+			rec = records[idx];
+			recHtml += "<tr><td>"+rec.date+"</td><td>"+rec.sname+"</td><td>"+rec.ret+"</td><td><button class='btn btn-info show-all-postdata' idx="+rec.ID+">查看参数</button></td></tr>";
+		}
+		$("#oplog .table tbody").html(recHtml);
+		$("#oplog").modal("show");
+	});
+});
+
+
+
+//发布日志对比
+$("#oplog").on("click",".table tbody button.show-all-postdata", function(){
+    var idx 	= $(this).attr("idx")*1;
+    $.post($URL,{
+        env:$ENV,
+        api:"oplog.compare",
+        rapi:rapi,
+		id  :idx,
+		app :$APP,
+    },function(rsp){
+        var prevpostmeta = "无";
+        var prevpostdata = "";
+        var postmeta = rsp['data'][0].sname + ": " + rsp['data'][0].date;
+        var postdata = "<pre>"+rsp['data'][0].postdata+"</pre>";
+        if( rsp['data'][1] ) {
+            prevpostmeta = rsp['data'][1].sname + ": " + rsp['data'][1].date;
+            prevpostdata = "<pre>"+rsp['data'][1].postdata+"</pre>";
+        }
+        $("#show-params .modal-body table tr.author-and-time td").eq(0).html(postmeta);
+        $("#show-params .modal-body table tr.author-and-time td").eq(1).html(prevpostmeta);
+        $("#show-params .modal-body table tr.post-data-div td").eq(0).html(postdata);
+        $("#show-params .modal-body table tr.post-data-div td").eq(1).html(prevpostdata);
+        $("#show-params").modal("show");
+    });
+
+});
+
+//发布数据
+$(".content-header").on("click","button.push", function(){
+    var cfgId = $(this).attr("cfgId");
+    var oplogKey = $("button.show-oplog-modals").attr('rapi');
+    modalConfirm('提示', '确定要发布此配置数据？', function(){
+        $.post($URL, {
+            'env' : $ENV,
+            'api' : 'config.push',
+            'id'  : cfgId,
+            'oplogKey':oplogKey,
+
+        }, function(resp){
+            $('#confirm').modal('hide');
+            if(!resp) {
+                return;
+            }
+            if(resp.errno==1) {
+                modalAlert('提示', "暂无修改数据", 'modal-info');
+                return;
+            }
+            if(resp.errno) {
+                modalAlert('出错了!', resp.error, 'modal-danger');
+                return;
+            }
+            modalAlert('提示', '操作成功!', 'modal-success', true);
+            return;
+        }, 'json');
+    },'modal-info');
+});
+
+$("#submit-review-post").click(function(){
+	var remark 	= $("#reviewbox input[name=remark]").val();
+	var emer	= $("#reviewbox input[name=emergence]").val();
+	var id 		= $("#reviewbox input[name=reviewid]").val();
+	if( id == "" ) {
+		toast.waring("审核单id=0","", {timeOut:2000});
+		return;
+	}
+	if( remark == "" ) {
+		toastr.waring("操作说明不能为空!", "", {timeOut:1500});
+		return;
+	}
+	$.post($URL,{
+		api:"review.remark",
+		env:$ENV,
+		remark:remark,
+		emr:emer,
+		id:id
+	}, function(rsp){
+		if( rsp.errno ) {
+			toastr.warning(rsp.error, "", {timeOut:2000});
+		} else if(rsp.errno == 0 ) {
+			toastr.options.positionClass="toast-top-center";
+			toastr.options.onHidden=function(){
+				window.location.reload();
+			}
+			toastr.success("提交成功,请耐心等待管理员审核", "", {timeOut:1500});
+		} else {
+			toastr.error("发生神秘灵异事件");
+		}
+	});
+});
+//检查是否有审核相关的提示
+function assertReview(rsp) {
+	if( rsp.errno < 10000 ) {
+		return;
+	}
+	if( rsp.errno == 10000 ) {
+		toastr.info("您的申请已提交，请耐心等待管理员审核！", "", {timeOut:1500});
+	} else if(rsp.errno == 11000 ){
+		$("#reviewbox").find(".modal-title").text(rsp.error);
+		$("#reviewbox input[name=reviewid]").val(rsp.data.id);
+		$("#reviewbox").modal("show");
+	} else {
+		toastr.error(rsp.error, "", {timeOut:2000});
+	}
+	throw "审核中断，无需关注";
+}
+</script>
+<!-- Select2 -->
+<script src="./test1_files/select2.full.min.js.下载"></script>
+
+<!-- ChartJS -->
+<script src="./test1_files/Chart.bundle.min.js.下载"></script>
+<script type="text/javascript">
+$(function(){
+    //Initialize Select2 Elements
+    $('.select2').select2();
+
+	var App = 0;
+
+	// ---- 在线在玩 ----
+	var onlineStat = new Chart($('#online_canvas').get(0).getContext('2d'), {
+		'type': 'line',
+		'data': {
+			'labels': [],
+			'datasets': [{
+				'label': '在线',
+				'data': [],
+				'borderColor': '#0099CC',
+				'fill': false,
+				'borderWidth': 1
+			},{
+				'label': '在玩',
+				'data': [],
+				'borderColor': '#999900',
+				'fill': false,
+				'borderWidth': 1
+			}]
+		},
+		'options': {
+			'scales': {
+				'yAxes': [{
+					'ticks': {
+						'beginAtZero': true
+					}
+				}]
+			}
+		}
+	});
+
+	var onlineStatRange = 0;
+	var searchTime	= 0;
+
+	function onlineStatUpdate() {
+		$.post($URL, {
+			'env': $ENV,
+			'api': 'ajax.stat.online',
+			'app': App,
+			'range': onlineStatRange,
+			'searchTime':searchTime
+		}, function(resp){
+			if(resp.data) {
+				onlineStat.data.labels = resp.data.label;
+				onlineStat.data.datasets[0].data = resp.data.online;
+				onlineStat.data.datasets[1].data = resp.data.play;
+				onlineStat.update();
+			}
+		}, 'json');
+	}
+
+	$('#online_refresh').click(function(){
+		onlineStatUpdate();
+	});
+
+	$('#online_links a').click(function(){
+		onlineStatRange = $(this).attr('data-ext');
+		onlineStatUpdate();
+		return false;
+	});
+
+	$('#online_date').change(function(){
+		onlineStatRange = $(this).val();
+		onlineStatUpdate();
+		return false;
+	});
+
+	onlineStatUpdate();
+
+	// ---- 活跃 ----
+	var dauStat = new Chart($('#dau_canvas').get(0).getContext('2d'), {
+		'type': 'line',
+		'data': {
+			'labels': [],
+			'datasets': [{
+				'label': 'DAU',
+				'data': [],
+				'borderColor': '#0099CC',
+				'fill': false,
+				'borderWidth': 1
+			}]
+		},
+		'options': {
+			'scales': {
+				'yAxes': [{
+					'ticks': {
+						'beginAtZero': true
+					}
+				}]
+			}
+		}
+	});
+
+	var dauStatRange = 1;
+
+	function dauStatUpdate() {
+		$.post($URL, {
+			'env': $ENV,
+			'api': 'ajax.stat.dau',
+			'app': App,
+			'range': dauStatRange
+		}, function(resp){
+			if(resp.data) {
+				dauStat.data.labels = resp.data.label;
+				dauStat.data.datasets[0].data = resp.data.value;
+				dauStat.update();
+			}
+		}, 'json');
+	}
+
+	$('#dau_refresh').click(function(){
+		dauStatUpdate();
+	});
+
+	$('#dau_links a').click(function(){
+		dauStatRange = $(this).attr('data-ext');
+		dauStatUpdate();
+		return false;
+	});
+
+	dauStatUpdate();
+
+	// ---- 新增 ----
+	var regStat = new Chart($('#reg_canvas').get(0).getContext('2d'), {
+		'type': 'line',
+		'data': {
+			'labels': [],
+			'datasets': [{
+				'label': '注册',
+				'data': [],
+				'borderColor': '#0099CC',
+				'fill': false,
+				'borderWidth': 1
+			}]
+		},
+		'options': {
+			'scales': {
+				'yAxes': [{
+					'ticks': {
+						'beginAtZero': true
+					}
+				}]
+			}
+		}
+	});
+
+	var regStatRange = 1;
+
+	function regStatUpdate() {
+		$.post($URL, {
+			'env': $ENV,
+			'api': 'ajax.stat.reg',
+			'app': App,
+			'range': regStatRange
+		}, function(resp){
+			if(resp.data) {
+				regStat.data.labels = resp.data.label;
+				regStat.data.datasets[0].data = resp.data.value;
+				regStat.update();
+			}
+		}, 'json');
+	}
+
+	$('#reg_refresh').click(function(){
+		regStatUpdate();
+	});
+
+	$('#reg_links a').click(function(){
+		regStatRange = $(this).attr('data-ext');
+		regStatUpdate();
+		return false;
+	});
+
+	regStatUpdate();
+
+	// ---- 玩牌 ----
+	var playStat = new Chart($('#play_canvas').get(0).getContext('2d'), {
+		'type': 'line',
+		'data': {
+			'labels': [],
+			'datasets': [{
+				'label': '玩牌',
+				'data': [],
+				'borderColor': '#0099CC',
+				'fill': false,
+				'borderWidth': 1
+			}]
+		},
+		'options': {
+			'scales': {
+				'yAxes': [{
+					'ticks': {
+						'beginAtZero': true
+					}
+				}]
+			}
+		}
+	});
+
+	var playStatRange = 1;
+
+	function playStatUpdate() {
+		$.post($URL, {
+			'env': $ENV,
+			'api': 'ajax.stat.play',
+			'app': App,
+			'range': playStatRange
+		}, function(resp){
+			if(resp.data) {
+				playStat.data.labels = resp.data.label;
+				playStat.data.datasets[0].data = resp.data.value;
+				playStat.update();
+			}
+		}, 'json');
+	}
+
+	$('#play_refresh').click(function(){
+		playStatUpdate();
+	});
+
+	$('#play_links a').click(function(){
+		playStatRange = $(this).attr('data-ext');
+		playStatUpdate();
+		return false;
+	});
+
+	playStatUpdate();
+
+	// ---- 付费 ----
+	var payStat = new Chart($('#pay_canvas').get(0).getContext('2d'), {
+		'type': 'line',
+		'data': {
+			'labels': [],
+			'datasets': [{
+				'label': '付费',
+				'data': [],
+				'borderColor': '#0099CC',
+				'fill': false,
+				'borderWidth': 1
+			}]
+		},
+		'options': {
+			'scales': {
+				'yAxes': [{
+					'ticks': {
+						'beginAtZero': true
+					}
+				}]
+			}
+		}
+	});
+
+	var payStatRange = 1;
+
+	function payStatUpdate() {
+		$.post($URL, {
+			'env': $ENV,
+			'api': 'ajax.stat.pay',
+			'app': App,
+			'range': payStatRange
+		}, function(resp){
+			if(resp.data) {
+				payStat.data.labels = resp.data.label;
+				payStat.data.datasets[0].data = resp.data.value;
+				payStat.update();
+			}
+		}, 'json');
+	}
+
+	$('#pay_refresh').click(function(){
+		payStatUpdate();
+	});
+
+	$('#pay_links a').click(function(){
+		payStatRange = $(this).attr('data-ext');
+		payStatUpdate();
+		return false;
+	});
+
+	payStatUpdate();
+
+	// ---- 金流 ----
+	var moneyStat = new Chart($('#money_canvas').get(0).getContext('2d'), {
+		'type': 'line',
+		'data': {
+			'labels': [],
+			'datasets': [{
+                'label': '真实发放',
+                'data': [],
+                'borderColor': '#009900',
+                'fill': false,
+                'borderWidth': 1,
+            },{
+				'label': '发放',
+				'data': [],
+				'borderColor': '#0099CC',
+				'fill': false,
+				'borderWidth': 1
+			},{
+				'label': '消耗',
+				'data': [],
+				'borderColor': '#999900',
+				'fill': false,
+				'borderWidth': 1
+			}]
+		},
+		'options': {
+			'scales': {
+				'yAxes': [{
+					'ticks': {
+						'callback': function(value, index, values) {
+							value = parseInt(value);
+							if(value < 1000) {
+								return value;
+							} else if(value < 1000000) {
+								return (value / 1000) + 'K';
+							} else if(value < 1000000000) {
+								return (value / 1000000) + 'M';
+							} else if(value < 1000000000000) {
+								return (value / 1000000000) + 'B';
+							} else {
+								return (value / 1000000000000) + 'T';
+							}
+						}
+					}
+				}]
+			}
+		}
+	});
+
+	var moneyStatRange = 1;
+
+	function moneyStatUpdate() {
+		$.post($URL, {
+			'env': $ENV,
+			'api': 'ajax.stat.money',
+			'app': App,
+			'range': moneyStatRange
+		}, function(resp){
+			if(resp.data) {
+				moneyStat.data.labels = resp.data.label;
+                moneyStat.data.datasets[0].data = resp.data.realplus;
+				moneyStat.data.datasets[1].data = resp.data.plus;
+				moneyStat.data.datasets[2].data = resp.data.minus;
+				moneyStat.update();
+			}
+		}, 'json');
+	}
+
+	$('#money_refresh').click(function(){
+		moneyStatUpdate();
+	});
+
+	$('#money_links a').click(function(){
+		moneyStatRange = $(this).attr('data-ext');
+		moneyStatUpdate();
+		return false;
+	});
+
+	moneyStatUpdate();
+
+	//应用切换
+	function refreshAll() {
+		onlineStatUpdate();
+		dauStatUpdate();
+		regStatUpdate();
+		playStatUpdate();
+		payStatUpdate();
+		moneyStatUpdate();
+	}
+
+	$('#appselector button').click(function(){
+		App = $(this).attr('data-ext');
+		$('button.active', this.parentNode).removeClass('active');
+		$(this).addClass('active');
+		refreshAll();
+	});
+
+
+
+
+});
+</script>
+
+</body></html>
