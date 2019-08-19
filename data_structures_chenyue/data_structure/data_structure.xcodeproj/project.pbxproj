@@ -23,8 +23,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0B34DF1823091C6E00FF288A /* data_structure */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = data_structure; sourceTree = BUILT_PRODUCTS_DIR; };
-		0B34DF1B23091C6E00FF288A /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		0B34DF1823091C6E00FF288A /* data_structure */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = data_structure; SourceTree = BUILT_PRODUCTS_DIR; };
+		0B34DF1B23091C6E00FF288A /* main.c */ = {isa = PBXFileReference; lastKnownFileType = Sourcecode.c.c; path = main.c; SourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,7 +44,7 @@
 				0B34DF1A23091C6E00FF288A /* data_structure */,
 				0B34DF1923091C6E00FF288A /* Products */,
 			);
-			sourceTree = "<group>";
+			SourceTree = "<group>";
 		};
 		0B34DF1923091C6E00FF288A /* Products */ = {
 			isa = PBXGroup;
@@ -52,7 +52,7 @@
 				0B34DF1823091C6E00FF288A /* data_structure */,
 			);
 			name = Products;
-			sourceTree = "<group>";
+			SourceTree = "<group>";
 		};
 		0B34DF1A23091C6E00FF288A /* data_structure */ = {
 			isa = PBXGroup;
@@ -60,7 +60,7 @@
 				0B34DF1B23091C6E00FF288A /* main.c */,
 			);
 			path = data_structure;
-			sourceTree = "<group>";
+			SourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -177,7 +177,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_Source;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;

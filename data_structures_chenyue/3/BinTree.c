@@ -100,8 +100,9 @@ BinTree Insert( BinTree BST, ElementType X )
 BinTree Delete( BinTree BST, ElementType X )
 {
 	Position Tmp;
-	if(!BST) return NULL;
-	if (BST->Data > X) {
+	if(!BST){
+        printf("Not Found\n");//如果最终树为空，说明没有
+    } else if (BST->Data > X) {
 		BST->Left = Delete(BST->Left, X);
 	} else if (BST->Data < X) {
 		BST->Right = Delete(BST->Right, X);
@@ -114,7 +115,7 @@ BinTree Delete( BinTree BST, ElementType X )
 			Tmp = BST;
 			if (!BST->Left)
 				BST = BST->Right;
-			else if (!BST->Left)
+			else if (!BST->Right)
 				BST = BST->Left;
 			free(Tmp);
 		}
@@ -124,32 +125,33 @@ BinTree Delete( BinTree BST, ElementType X )
 
 Position Find( BinTree BST, ElementType X )
 {
-	Position x = BST;
-	while (x != NULL && x->Data != X)
+	while (BST)
 	{
-		if(x->Data > X)
-			x = x->Left;
-		else x = x->Right;
+		if(BST->Data > X)
+			BST = BST->Left;
+		else if(BST->Data < X)
+		 BST = BST->Right;
+		else return BST;
 	}
-	return x;
+	return NULL;
 }
 
 Position FindMin( BinTree BST )
 {
-	Position x = BST;
-	while (x->Left != NULL)
+	if(!BST) return NULL;
+	while (BST->Left != NULL)
 	{
-		x = x->Left;
+		BST = BST->Left;
 	}
-	return x;
+	return BST;
 }
 
 Position FindMax( BinTree BST )
 {
-	Position x = BST;
-	while (x->Right != NULL)
+	if(!BST) return NULL;
+	while (BST->Right != NULL)
 	{
-		x = x->Right;
+		BST = BST->Right;
 	}
-	return x;
+	return BST;
 }
