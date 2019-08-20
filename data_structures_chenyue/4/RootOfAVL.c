@@ -15,6 +15,7 @@ BinTree RR(BinTree BST);  //发现者的右子树的右子树
 BinTree LL(BinTree BST);  //发现者的左子树的左子树
 BinTree LR(BinTree BST);  //发现者的左子树的右子树
 BinTree RL(BinTree BST);  //发现者的右子树的左子树
+BinTree FixTree(BinTree BST);
 
 int main() {
     BinTree BST = NULL;
@@ -24,6 +25,8 @@ int main() {
         scanf("%d", &X);
         BST = Insert(BST, X);
     }
+	BST = FixTree(BST);
+	if(BST) printf("%d", BST->Data);
 }
 
 BinTree Insert( BinTree BST, ElementType X )
@@ -51,8 +54,10 @@ BinTree Insert( BinTree BST, ElementType X )
 BinTree RR(BinTree BST)  //发现者的右子树的右子树
 {
 	BinTree Source = BST;
-    BST = BST->Left;
+
+	BST = BST->Right;
 	Source->Right = BST->Left;
+
 	BST->Left = Source;
 	return BST;
 }
@@ -60,8 +65,10 @@ BinTree RR(BinTree BST)  //发现者的右子树的右子树
 BinTree LL(BinTree BST)  //发现者的左子树的左子树
 {
 	BinTree Source = BST;
+
 	BST = BST->Left;
 	Source->Left = BST->Right;
+
 	BST->Right = Source;
 	return BST;
 }
@@ -70,11 +77,13 @@ BinTree LR(BinTree BST)  //发现者的左子树的右子树
 {
 	BinTree Root, Tmp, Source = BST;
 	Root = BST->Left->Right;
+
 	Tmp = Root;
 	Root->Right = Source;
+
 	Root->Left = Source->Left;
 	Source->Left = NULL;
-	Root->Left->Right = Tmp->Right ? Tmp->Right : Root->Left;
+
 	return Root;
 }
 
@@ -82,10 +91,30 @@ BinTree RL(BinTree BST)  //发现者的右子树的左子树
 {
 	BinTree Root, Tmp, Source = BST;
 	Root = BST->Right->Left;
+
 	Tmp = Root;
 	Root->Left = Source;
+	
 	Root->Right = Source->Right;
 	Source->Right = NULL;
-	Root->Right->Left = Tmp->Right ? Tmp->Right : Root->Left;
+
 	return Root;
+}
+
+BinTree FixTree(BinTree BST)
+{
+	if(!BST) return BST;
+	if(BST->Left && BST->Right){
+		BST->Left = FixTree(BST->Left);
+		BST->Right = FixTree(BST->Right);
+	} else if (BST->Left && BST->Left->Left) {
+		BST = LL(BST);
+	} else if(BST->Left && BST->Left->Right) {
+		BST = LR(BST);
+	} else if(BST->Right && BST->Right->Right) {
+		BST = RR(BST);
+	} else if(BST->Right && BST->Right->Left) {
+		BST = RL(BST);
+	}
+	return BST;
 }
