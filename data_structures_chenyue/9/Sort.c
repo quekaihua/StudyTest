@@ -58,14 +58,21 @@ void Selection_Sort(ElementType A[], int N)
 	}
 }
 
-void Heap_Sort(ElementType A[], int N)
+void Heap_Sort ( ElementType A[], int N )
+{ 
+	int i;
+	for ( i=N/2-1; i>=0; i-- )/* BuildHeap */
+		PercDown( A, i, N );
+	
+	for ( i=N-1; i>0; i-- ) {
+		Swap( &A[0], &A[i] ); /* DeleteMax */
+		PercDown( A, 0, i );
+	}
+}
+
+void PercDown(ElementType A[], int start, int length)
 {
-	BuildHeap(A);
-	ElementType TmpA[N];
-	for (int i=0; i<N; i++)
-		TmpA[i] = DeleteMin(A);
-	for (int i=0; i<N; i++)
-		A[i] = TmpA[i];
+
 }
 
 void Swap(ElementType *a, ElementType *b)

@@ -1,14 +1,18 @@
 #include <stdio.h>
+#include <limits.h>
 
 #define MAXSIZE 101
-
 typedef int Vertex;
 
 int Graph[MAXSIZE][MAXSIZE];
+int Dist[MAXSIZE][MAXSIZE];
 
 void InitialGraph(int N);
 void InsertEdge(int point1, int point2, int weight);
-int BSF(Vertex v, int N);
+// int BSF(Vertex v, int N);
+void Floyed(int N);
+void PrintResult(int N);
+
 int main()
 {
 	int N, M;
@@ -22,21 +26,9 @@ int main()
 		InsertEdge(point1, point2, weight);
 	}
 
-	int shortest[MAXSIZE];
-	for(int i=1; i<=N; i++) {
-		shortest[i] = BSF(i, N);
-	}
+	Floyed(N);
+	PrintResult(N);
 
-	int min;
-	int index = 0;
-	for (int i=1; i<=N; i++) {
-		if (i==1 || min > shortest[i]) {
-			min = shortest[i];
-			index = i;
-		}
-	}
-	
-	min == 0 ? printf("%d", min) : printf("%d %d", index, min);
 	return 0;
 }
 
@@ -53,33 +45,50 @@ void InsertEdge(int point1, int point2, int weight)
 	Graph[point2][point1] = weight;
 }
 
-int BSF(Vertex v, int N)
+void Floyed(int N)
 {
-	int Q[MAXSIZE];
-	int front=0, rear=0;
-	Vertex s = v;
-	Q[rear++] = v;
-	int Dist[MAXSIZE];
-	for (int i=1; i<=N; i++) {
-		Dist[i] = -1;
-	}
-	while(front < rear) {
-		Vertex w  = Q[front++];
-		for(int i=1; i<=N; i++){
-			if (Graph[w][i] && Dist[i] == -1 && i != s) {
-				Dist[i] = Dist[w] + Graph[w][i];
-				Q[rear++] = i;
-			}
+	for (int i = 1; i<=N; i++)
+		for (int j=1; j<=N; j++) {
+			if(i != j)
+				Dist[i][j] = INT_MAX;
 		}
-	}
+	for (int i = 1; i<=N; i++)
+		for (int j=1; j<=N; j++) {
+			if(i !=j && Graph[i][j])
+				Dist[i][j] = Graph[i][j];
+		}
+	
+	int distance;
+	for (int k=1; k<=N; k++)
+		for (int i=1; i<=N; i++) 
+			for (int j = 1; j<=N; j++) {
+				distance = (Dist[i][k] == INT_MAX || Dist[k][j] == INT_MAX) ? INT_MAX : Dist[i][k] + Dist[k][j];
+				if(Dist[i][j] > distance) {
+					Dist[i][j] = distance;
+					Dist[j][i] = distance;
+				}
+			}
+}
+
+void PrintResult(int N)
+{
+	int max;
+	int shortest[MAXSIZE];
 	for (int i=1; i<=N; i++) {
-		if(Dist[i] == -1 && i != s)
-			return 0;
+		max = -1;
+		for(int j=1; j<=N; j++){
+			if(max < Dist[i][j]) max = Dist[i][j];
+		}
+		shortest[i] = max;
 	}
 
-	int max = -1;
+	int min, index;
 	for (int i=1; i<=N; i++) {
-		if(max < Dist[i]) max = Dist[i];
+		if (i==1 || min > shortest[i]) {
+			min   = shortest[i];
+			index = i;
+		}
 	}
-	return max+1;
+	
+	min == INT_MAX ? printf("%d", 0) : printf("%d %d", index, min);
 }
