@@ -2,6 +2,7 @@
 #include <math.h>
 
 #define MAXSIZE 100000
+
 int Table[MAXSIZE];
 typedef int Position, ElementType;
 int N, M;
@@ -38,7 +39,14 @@ void InsertTable(int TableSize)
 	int Key;
 	for (int i=0; i<N; i++) {
 		scanf("%d", &Key);
-		Find(Key, TableSize);
+		Position pos = Find(Key, TableSize);
+		if(pos == -1)
+			printf("-");
+		else {
+			printf("%d", pos);
+			Table[pos] = Key;
+		}
+
 		if(i != N-1)
 			printf(" ");
 	}
@@ -51,7 +59,22 @@ Position Hash(ElementType Key, int TableSize)
 
 Position Find(ElementType Key, int TableSize)
 {
+	// Position NewPos,CurrentPos;
+	// int CNum = 0;  // 记录冲突次数 
+	// CurrentPos = NewPos = Hash(Key, TableSize);
+	// printf("newpos=%d\n", NewPos);
+	// // 如果当前状态不为空，且一直不等，一直做 
+	// while(Table[NewPos] && Table[NewPos] != Key){
+	// 	printf("newpos=%d\n", NewPos);
+	// 	CNum++;
+	// 	NewPos = (CurrentPos + CNum*CNum) % TableSize;
+	// 	if(CNum == TableSize/2) // 没找到
+	// 		return -1;
+	// }
+	// return NewPos;
+
 	Position pos = Hash(Key, TableSize);
+	Position current = pos;
 	int cnum = 1;  //冲突次数
 	// while(Table[pos] != 0){
 	// 	pos = Hash(pos + cnum*cnum, TableSize);
@@ -62,18 +85,17 @@ Position Find(ElementType Key, int TableSize)
 	// }
 	while ( cnum < TableSize ) {  //k>=size后，平方探测将进入一个死循环
 			if ( Table[pos] == 0 ) { //如果该位置没有元素
-				Table[pos] = Key;
-				printf("%d", pos);
-				break;
+				return pos;
 			}
 			else { //该位置有元素，使用平方探测法解决冲突
-				pos = ( pos + cnum*cnum ) % TableSize;
+				pos = ( current + cnum*cnum ) % TableSize;
 				cnum++;
 			}
 	}
-	if(cnum == TableSize) 
-		printf("-");
-	return 0;
+	return -1;
+	// if(cnum == TableSize) 
+	// 	printf("-");
+	// return 0;
 }
 
 int NextPrime ( int N )
