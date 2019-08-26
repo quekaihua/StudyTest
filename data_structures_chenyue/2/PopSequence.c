@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int capacity;
-#define MAXSIZE 10
+#define MAXSIZE 1005
 int input[MAXSIZE];
 int Stack[MAXSIZE];
 
@@ -23,24 +23,18 @@ int IsPopSequence(int input[], int n)
 {
 	//initial stack
 	Stack[capacity];
-	int top = 0;
+	int top = 1;
+	Stack[0] = 0;
 
-	int data,next_data, value, max=0, check=0;
+	int max=1;
 	for (int i=0; i<n; i++) {
-		data = input[i];
-		if (data>max) {
-			if(top && Stack[top] < data){
-				//pop
-				value = Stack[--top];
-				if(value != input[check++]) return 0;
-			}
-			for(int j=max+1; j<=data; j++) {
-				//push
-				if(top+1 > capacity) return 0;
-				Stack[top++] = j;
-			}
-			max = data;
+		while(Stack[top-1] < input[i] && top <= capacity) {
+			Stack[top++] = max++;
 		}
+		// printf("Stack[%d]=%d, input[%d]=%d\n", top-1, Stack[top-1], i, input[i]);
+		if (Stack[top-1] == input[i])
+			--top;
+		else return 0;
 	}
 	return 1;
 }

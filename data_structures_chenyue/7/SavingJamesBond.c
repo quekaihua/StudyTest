@@ -16,18 +16,20 @@ double D;
 
 int Graph[MAXSIZE][MAXSIZE];
 Point Points[MAXSIZE];
-bool visited[MAXSIZE];
+int dist[MAXSIZE], path[MAXSIZE];
 int count = 0; //calculate points
 
-void InitialVisited();
+void InitialPath(int S);
+void InitialDist(int S);
 void InitialGraph();
 void BuildEdge();
 void InsertVertex(Point x);
 void InsertEdge(Point x, Point y, int i, int j);
 
-bool DFS(int V);
 int Distance(Point X, Point Y);
 bool IsSave(Point X);
+void Unweighted (Vertex S);
+void PrintPath();
 
 int main()
 {
@@ -46,17 +48,9 @@ int main()
     BuildEdge(D);
 
     // Points = malloc(sizeof(Point)*MAXSIZE*MAXSIZE);
-    InitialVisited();
-    Point begin;
-    bool flag = false;
-    for (int i=0; i<count; i++){
-        begin = Points[i];
-        if(begin->x == begin->y && begin->x ==50){
-            flag = DFS(i);
-            break;
-        }
-    }
-    flag ? printf("Yes\n") : printf("No\n");
+    Unweighted(0);
+	PrintPath();
+
     return 0;
 }
 
@@ -71,10 +65,16 @@ void InitialGraph()
     Points[count++] = a;
 }
 
-void InitialVisited()
+void InitialPath(int S)
 {
     for(int i=0; i<count; i++)
-        visited[i] = false;
+        path[i] = i==S ? -1 : 0;
+}
+
+void InitialDist(int S)
+{
+	for(int i=0; i<count; i++)
+		dist[i] = i==S ? 0 : -1;
 }
 
 void BuildEdge()
@@ -112,24 +112,6 @@ int Distance(Point X, Point Y)
     return (Y->x - X->x) * (Y->x - X->x) + (X->y - Y->y) * (X->y - Y->y);
 }
 
-bool DFS(int V)
-{
-    visited[V] = true;
-    Point ptr = Points[V];
-    bool flag;
-    // printf("%d %d\n", ptr->x, ptr->y);
-    // IsSave(ptr) ? printf("yes\n") : printf("no\n");
-    if(IsSave(ptr)) return true;
-    for(int i=0; i<count; i++){
-        if (Graph[V][i] && !visited[i]){
-            flag = DFS(i);
-            if(flag == true)
-                return true;
-        }
-    }
-    return false;
-}
-
 bool IsSave(Point X){
     Point Y = malloc(sizeof(struct point));
     Y->x = X->x;
@@ -161,4 +143,87 @@ bool IsSave(Point X){
     }
 
     return false;
+}
+
+void Unweighted (Vertex S)
+{
+	InitialPath(S);
+	InitialDist(S);
+
+	int rear, front, Queue[MAXSIZE];
+	rear = 0;
+	front = 0;
+	Queue[front++] = S;
+
+	Vertex V, i;
+	while(rear < front) {
+		V = Queue[rear++];
+		for(i=0; i<count; i++){
+			if(Graph[V][i] && dist[i] == -1) {
+				dist[i] = dist[V] + 1;
+				path[i] = V;
+				Queue[front++] = i;
+			}
+		}
+	}
+}
+
+void PrintPath()
+{
+	int j = 0, save[MAXSIZE];
+	for(int i=0; i<count; i++) {
+		Point ptr = Points[i];
+		if(IsSave(ptr)) {
+			save[j++] = i;
+		}
+	}
+
+	int k = 0;
+	int min=0, minPath[MAXSIZE];
+	for(int i=0; i<j; i++)
+	{
+		if((dist[save[i]] > 0 && dist[save[i]] < min) || 
+		i==0) {
+			min = dist[save[i]];
+		}
+	}
+	if(min==0) {
+		printf("%d", min);
+		return;
+	}
+
+	for(int i=0; i<j; i++){
+		if(min == dist[save[i]]){
+			minPath[k++] = save[i];
+		}
+	}
+	int minPath_a, minPath_b, temp_a, temp_b, result;
+	for (int i=0; i<k; i++) {
+		for (int m=0; m<k; m++) {
+			// if(i==m) continue;
+			minPath_a = temp_a = minPath[i];
+			minPath_b = temp_b = minPath[m];
+			while(path[minPath_a] != 0) {
+				minPath_a = path[minPath_a];
+				minPath_b = path[minPath_b];
+			}
+			if(Distance(Points[minPath_a], Points[0]) < Distance(Points[minPath_b], Points[0])) {
+				result = temp_a;
+			} else {
+				result = temp_b;
+			}
+		}
+	}
+
+	int Stack[MAXSIZE], top=0, step=1;
+	while(path[result] != -1) {
+		Stack[top++] = result;
+		result = path[result];
+		step++;
+	}
+	printf("%d\n", step);
+	for(int i=top-1; i>=0; i--) {
+		Point p = Points[Stack[i]];
+		printf("%d %d\n", p->x-50, p->y-50);
+	}
 }

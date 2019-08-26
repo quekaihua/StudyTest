@@ -2,19 +2,29 @@
 #include <stdlib.h>
 
 typedef struct node *Node;
+typedef struct list *List;
+
+struct list {
+	Node head;
+	int length;
+};
 
 struct node {
 	int data;
 	int address;
 	int next;
+	Node PreNode, NextNode;
 };
 
 #define MAXSIZE 100001
+// #define MAXSIZE 10
 Node nodes[MAXSIZE];
 int list[MAXSIZE];
 
-void BuildList(int begin, Node nodes[], int n);
-void ReservingLinkedList(int list[], int n, int k);
+List BuildList(int begin, Node nodes[], int n, List L);
+void ReservingLinkedList(List L, int k);
+Node Find(Node head, int n);
+void Travel(List L);
 
 int main()
 {
@@ -23,83 +33,109 @@ int main()
 	Node ele;
 	for(int i=1; i<=n; i++){
 		ele = malloc(sizeof(struct node));
+		ele->NextNode = NULL;
+		ele->PreNode  = NULL;
 		scanf("%d %d %d", &ele->address, &ele->data, &ele->next);
 		nodes[i] = ele;
 	}
-	BuildList(begin, nodes, n);
-	ReservingLinkedList(list, n, k);
+	List L = (List)malloc(sizeof(struct list));
+	L->length = 0;
+	L->head = NULL;
 
-	int data, j;
-	Node p;
-	for (int i=1; i<=n; i++){
-		data = list[i];
-		//find the node
-		for (j=1; j<= n; j++) {
-			p = nodes[j];
-			if(p->data == data) break;
-		}
-		printf("%05d %d ", p->address, p->data);
-		p->next == -1 ? printf("%d\n", p->next) :
-			printf("%05d\n", p->next);
-	}
+	L = BuildList(begin, nodes, n, L);
+	ReservingLinkedList(L, k);
+	Travel(L);
 
 	return 0;
 }
 
-void BuildList(int begin, Node nodes[], int n)
+List BuildList(int begin, Node nodes[], int n, List L)
 {
-	Node p;
+	Node current, next;
 	int i, j;
 	for (i=1; i<= n; i++) {
-		p = nodes[i];
-		if(p->address == begin) break;
-	}
-	list[i] = p->data;
-	for (i=1; i<=n; i++){
-		for (j=1; j<= n; j++) {
-			p = nodes[j];
-			if(p->address == begin) break;
+		for (j=1; j<=n; j++) {
+			current = nodes[i];
+			next = nodes[j];
+			if(current->next == next->address) {
+				current->NextNode = next;
+				next->PreNode = current;
+				L->length++;
+			}
+			if(current->address == begin) {
+				L->head = current;
+			}
 		}
-		list[i] = p->data;
-		begin = p->next;
+	}
+	L->length++; //连接两个节点只加了一次，所以这里需要加上1
+	return L;
+}
+
+void ReservingLinkedList(List L, int k)
+{
+	Node current, first, last, temp, first_temp, last_temp;
+	int size;
+	size = L->length;
+	int rnum = 1;
+	while(size >= k && k > 1) {
+		current = Find(L->head, k*rnum-1);
+		for(int i=k; i>0; i--) {
+			//首部
+			if(i==k) {
+				first = current;
+				first_temp = (Node)malloc(sizeof(struct node));
+				first_temp->PreNode  = current->PreNode;
+				first_temp->NextNode = current->NextNode;
+			} else if(i==1) {  //尾部
+				if (L->head == current)
+					L->head = first;
+				last = current;
+				last_temp = (Node)malloc(sizeof(struct node));
+				last_temp->PreNode  = current->PreNode;
+				last_temp->NextNode = current->NextNode;
+			}
+			temp = current->NextNode;
+			current->NextNode = current->PreNode;
+			current->next = current->NextNode ? current->NextNode->address : -1;
+			current->PreNode = temp;
+			current = current->NextNode;
+		}
+		
+		first->PreNode = last_temp->PreNode;
+		last->NextNode = first_temp->NextNode;
+		last->next = last->NextNode ? last->NextNode->address : -1;
+		if (last_temp->PreNode) {
+			last_temp->PreNode->NextNode = first;
+			last_temp->PreNode->next     = first ? first->address : -1;
+		}
+		if (first_temp->NextNode) {
+			first_temp->NextNode->PreNode = last;
+		}
+		free(first_temp);
+		free(last_temp);
+		size = size - k;
+		rnum++;
 	}
 }
 
-void ReservingLinkedList(int list[], int n, int k)
+//寻找相对head节点后第n个节点
+Node Find(Node head, int n)
 {
-	int temp, j, l;
-	// for (int v = 1; v<=n; v++) printf("%d", list[v]);
-	for (int i=1; i<=n; i=i+k) {
-		if(i+k-1 > n) break;
-		for(j = i, l=i+k-1; j<l; j++, l--){
-			temp = list[j];
-			list[j] = list[l];
-			list[l] = temp;
-		}
+	Node current = head;
+	while(n > 0) {
+		current = current->NextNode;
+		n--;
 	}
-	// for (int v = 1; v<=n; v++) printf("%d", list[v]);
+	return current;
+}
 
-	int data;
-	Node current, next, p;
-	for (int i=1; i<=n; i++) {
-		data = list[i];
-		//find the node
-		for (j=1; j<= n; j++) {
-			p = nodes[j];
-			if(p->data == data) break;
-		}
-		current = p;
-		if (i == n) {
-			current->next = -1;
-		} else {
-			//find next node
-			data = list[i+1];
-			for (j=1; j<= n; j++) {
-				p = nodes[j];
-				if(p->data == data) break;
-			}
-			next = p;
-			current->next = next->address;
-		}
+void Travel(List L)
+{
+	Node current = L->head;
+	while(current) {
+		printf("%05d %d ", current->address, current->data);
+		current->next == -1 ? printf("%d\n", current->next) :
+			printf("%05d\n", current->next);
+		current = current->NextNode;
 	}
 }
