@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <limits.h>
 
-#define MAXSIZE 500
+#define MAXSIZE 5
 typedef int Vertex;
 
 int Graph[MAXSIZE][MAXSIZE];
 int Graph2[MAXSIZE][MAXSIZE];
-int Dist[MAXSIZE],Path[MAXSIZE], Collected[MAXSIZE], Cost[MAXSIZE];
+int Dist[MAXSIZE],Path[MAXSIZE], Collected[MAXSIZE];
 int N, M;
 
 void InitialPath(Vertex S);
@@ -14,9 +14,8 @@ void InitialDist(Vertex S);
 void InitialCollected(Vertex S);
 void InsertEdge(int point1, int point2, int weight, int price);
 Vertex GetShortDist();
-void Dijkstra(Vertex s, Vertex D);
+void Dijkstra(Vertex s);
 void InitialGraph(int N);
-void PrintResult(Vertex D);
 
 // int BSF(Vertex v, int N);
 
@@ -33,22 +32,20 @@ int main()
 		InsertEdge(point1, point2, weight, price);
 	}
 
-	Dijkstra(S, D);
+	Dijkstra(0);
 	
-	// for(int i=0; i<N; i++) {
-	// 	printf("Dist[%d]=%d ", i, Dist[i]);
-	// }
-	// printf("\n");
-	// for(int i=0; i<N; i++) {
-	// 	printf("Path[%d]=%d ", i, Path[i]);
-	// }
-	// printf("\n");
-	// for(int i=0; i<N; i++) {
-	// 	printf("Collected[%d]=%d ", i, Collected[i]);
-	// }
-	// printf("\n");
-
-	PrintResult(D);
+	for(int i=0; i<N; i++) {
+		printf("Dist[%d]=%d ", i, Dist[i]);
+	}
+	printf("\n");
+	for(int i=0; i<N; i++) {
+		printf("Path[%d]=%d ", i, Path[i]);
+	}
+	printf("\n");
+	for(int i=0; i<N; i++) {
+		printf("Collected[%d]=%d ", i, Collected[i]);
+	}
+	printf("\n");
 	return 0;
 }
 
@@ -69,10 +66,8 @@ void InitialPath(Vertex S)
 
 void InitialDist(Vertex S)
 {
-	for(int i=0; i<N; i++) {
+	for(int i=0; i<N; i++)
 		Dist[i] = i==S ? 0 : INT_MAX;
-		Cost[i] = i==S ? 0 : INT_MAX;
-	}
 }
 
 void InitialCollected(Vertex S)
@@ -89,7 +84,7 @@ void InsertEdge(int point1, int point2, int weight, int price)
 	Graph2[point2][point1] = price;
 }
 
-void Dijkstra(Vertex s, Vertex D)
+void Dijkstra(Vertex s)
 {
 	InitialCollected(s);
 	InitialDist(s);
@@ -99,7 +94,6 @@ void Dijkstra(Vertex s, Vertex D)
 	for(int i=0; i<N; i++) {
 		if(Graph[s][i]) {
 			Dist[i] = Graph[s][i];
-			Cost[i] = Graph2[s][i];
 			Path[i] = s;
 		}
 	}
@@ -115,17 +109,13 @@ void Dijkstra(Vertex s, Vertex D)
 				if (Dist[v] + Graph[v][i] < Dist[i]) {
 					Dist[i] = Dist[v] + Graph[v][i];
 					Path[i] = v;
-					Cost[i] = Cost[v] + Graph2[v][i];
-				} else if (Dist[v] + Graph[v][i] == Dist[i] &&
-				Cost[v] + Graph2[v][i] < Cost[i]) {
-					Path[i] = v;
-					Cost[i] = Cost[v] + Graph2[v][i];
 				}
 			}
 		}
 	}
 }
 
+//可以用最小堆优化  todo
 Vertex GetShortDist()
 {
 	int Min = INT_MAX;
@@ -141,10 +131,5 @@ Vertex GetShortDist()
 	}
 
 	return MinVertex;
-}
-
-void PrintResult(Vertex D)
-{
-	printf("%d %d", Dist[D], Cost[D]);
 }
 
