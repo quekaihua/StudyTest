@@ -1,7 +1,12 @@
 #include <stdio.h>
 #include <stdio.h>
 
-int IsValid(int Score);
+struct user {
+	int user_id;
+	int * score;
+	int 
+}
+int IsValid(int problem_id, int Score);
 
 int main()
 {
@@ -17,11 +22,16 @@ int main()
 	//初始化学生信息
 	for(int i; i<N; i++){
 		scanf("%d %d %d", &user_id, &problem_id, &score);
-		if(IsValid){
+		if(IsValid(problem_id, score)){
 			InsertOrUpdate(UserInfo L, user_id, problem_id, score);
 		}
 	}
 
 	//建立分数表格
 	
+}
+
+int IsValid(int problem_id, int Score)
+{
+
 }
