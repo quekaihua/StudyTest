@@ -30,6 +30,7 @@ int Distance(Point X, Point Y);
 bool IsSave(Point X);
 void Unweighted (Vertex S);
 void PrintPath();
+void FirstMinimun(int V, int W);
 
 int main()
 {
@@ -159,6 +160,8 @@ void Unweighted (Vertex S)
 	while(rear < front) {
 		V = Queue[rear++];
 		for(i=0; i<count; i++){
+			if(dist[i] != -1 && dist[V] + 1 == dist[i])
+				FirstMinimun(V, i);
 			if(Graph[V][i] && dist[i] == -1) {
 				dist[i] = dist[V] + 1;
 				path[i] = V;
@@ -166,6 +169,26 @@ void Unweighted (Vertex S)
 			}
 		}
 	}
+}
+
+void FirstMinimun(int V, int W)
+{
+    int i, pre1, pre2;
+    
+    i = V; pre1 = V;
+    while(path[i] != 1){
+        pre1 = path[i];
+        i = pre1;
+    }
+    
+    i = W; pre2 = W;
+    while(path[i] != 1){
+        pre2 = path[i];
+        i = pre2;
+    }
+    
+    if(Distance(Points[pre1], Points[0]) < Distance(Points[pre2],Points[0]))
+        path[W] = V;
 }
 
 void PrintPath()
@@ -177,18 +200,25 @@ void PrintPath()
 			save[j++] = i;
 		}
 	}
+	// for(int i=0; i<j; i++) {
+	// 	printf("save = %d, %d\n", Points[save[i]]->x, Points[save[i]]->y);
+	// }
 
 	int k = 0;
-	int min=0, minPath[MAXSIZE];
+	int min=-1, minPath[MAXSIZE];
 	for(int i=0; i<j; i++)
 	{
-		if((dist[save[i]] > 0 && dist[save[i]] < min) || 
+		// printf("dist[%d]=%d ", i, dist[i]);
+		if((dist[save[i]] > -1 && dist[save[i]] < min) || 
 		i==0) {
 			min = dist[save[i]];
 		}
 	}
-	if(min==0) {
-		printf("%d", min);
+	if(min==-1) {
+		printf("0");
+		return;
+	} else if (min==0) {
+		printf("1"); 
 		return;
 	}
 

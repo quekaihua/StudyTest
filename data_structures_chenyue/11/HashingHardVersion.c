@@ -3,9 +3,8 @@
 #include <stdlib.h>
 
 #define MAXSIZE 1000
-// int Table[MAXSIZE];
-int Queue[MAXSIZE];
-int Table[11] = {33, 1, 13, 12, 34, 38, 27, 22, 32, -1, 21};
+int Table[MAXSIZE];
+// int Table[11] = {33, 1, 13, 12, 34, 38, 27, 22, 32, -1, 21};
 int Indegree[MAXSIZE] = {0};
 int Graph[MAXSIZE][MAXSIZE];
 
@@ -17,7 +16,7 @@ struct HeapStruct{
 	int Capacity;
 };
 typedef int Position, ElementType;
-int N;
+int N, M=0;
 
 Position Find(ElementType Key, int TableSize);
 void TopSort(int N);
@@ -33,18 +32,18 @@ MinHeap CreateHeap();
 
 int main()
 {
-	// scanf("%d", &N);
+	scanf("%d", &N);
 	N = 11;
-	// for (int i=0; i<N; i++) {
-	// 	scanf("%d", Table[i]);
-	// }
+	for(int i=0; i<N; i++){
+		Table[i] = -1;
+	}
+	for (int i=0; i<N; i++) {
+		scanf("%d", &Table[i]);
+		if(Table[i] != -1) M++;
+	}
 
 	InitialGraph(N);
 	BuildGraph(N);
-	for(int i=0; i<N; i++) {
-		printf("Indegree[%d]=%d ", i, Indegree[i]);
-	}
-	printf("\n");
 	TopSort(N);
 
 	return 0;
@@ -65,40 +64,35 @@ void BuildGraph(int N)
 
 void TopSort(int N)
 {
-	int front, rear;
 	int V;
-	front = rear = 0;
 	MinHeap H = CreateHeap();
 	for (int i=0; i<N; i++)
 		if(Table[i] != -1 && Indegree[i] == 0) {  //度为0的入队
-			Queue[rear++] = i;
 			Insert(H, Table[i]);
 		}
 		BuildMinHeap(H);
-		for(int i=0; i<H->Size; i++) 
-		printf("Ele[%d]=%d ", i, H->Elements[i]);
-		printf("\n");
+		// for(int i=0; i<H->Size; i++) 
+		// printf("Ele[%d]=%d ", i, H->Elements[i]);
+		// printf("\n");
 	int data;
-	while(front<rear) {
-		V = Queue[front++];
+	int cnt = 0;
+	while( !IsEmpty(H) ) {
 		data = DeleteMin(H);
-		// printf("data=%d ", data);
+		printf("%d", data);
+		cnt++;
+		if (cnt != M) printf(" ");
+		int k;
+		for(k=0; k<N; k++) {
+			if (Table[k]==data) break;
+		}
 		for (int j=0; j<N; j++) {
-			if(Graph[V][j] != 0) {
+			if(Graph[k][j] != 0) {
 				if (--Indegree[j] == 0) {  //度为0的入队
-					Queue[rear++] = j;
 					Insert(H, Table[j]);
 					BuildMinHeap(H);
-					for(int i=0; i<H->Size; i++) 
-		printf("Ele[%d]=%d ", i, H->Elements[i]);
-		printf("\n");
 				}
 			}
 		}
-	}
-	while(!IsEmpty(H)){
-		V = DeleteMin(H);
-		printf("V=%d ", V);
 	}
 }
 

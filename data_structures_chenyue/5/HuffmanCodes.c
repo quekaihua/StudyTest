@@ -94,12 +94,19 @@ int BuildHuffman(char code[][MAXSIZE], int N)
 		for(int j=0; code[i][j] != '\0'; j++) {
 			if (code[i][j] == '0') {
 				if(Current->Left == NULL) Current->Left = CreateNode();
+				else {
+					if(Current->Left->code == '1') return 0;
+				}
 				Current = Current->Left;
 			} else if(code[i][j] == '1'){
 				if(Current->Right == NULL) Current->Right = CreateNode();
+				else {
+					if(Current->Right->code == '1') return 0;
+				}
 				Current = Current->Right;
 			}
 		}
+		Current->code = '1';
 		if(Current->Left != NULL || Current->Right != NULL) return 0;
 	}
 	return 1;
