@@ -8,13 +8,13 @@ void swap(int *a, int *b)
 	*b = temp;
 }
 
-int compare(int a, int b)
+int cmpfunc (const void * a, const void * b)
 {
-	return a-b;
+   return ( *(int*)a - *(int*)b );
 }
 
 int arrayPairSum(int* nums, int numsSize){
-	qsort(nums, numsSize, compare);
+	qsort(nums, numsSize, sizeof(int), cmpfunc);
 
 	int sum=0;
 	for(int i=0; i<numsSize; i+=2) {
