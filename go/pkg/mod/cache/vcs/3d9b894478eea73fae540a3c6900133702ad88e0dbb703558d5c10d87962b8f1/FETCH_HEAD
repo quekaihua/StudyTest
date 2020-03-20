@@ -1,0 +1,3 @@
+bac4c82f69751a6dd76e702d54b3ceb88adab236		branch 'master' of https://github.com/golang/crypto
+8b5121be2f68d8fc40bb06467003bdde1040a094		branch 'release-branch.go1.13' of https://github.com/golang/crypto
+69ecbb4d6d5dab05e49161c6e77ea40a030884e1		branch 'release-branch.go1.14' of https://github.com/golang/crypto
